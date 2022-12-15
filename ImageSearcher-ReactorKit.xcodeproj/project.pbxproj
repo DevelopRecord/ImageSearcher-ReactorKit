@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3FDF5390B8F5783ABA9829C8 /* Pods_ImageSearcher_ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */; };
+		C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0429498F0400E35C6F /* AppDelegate.swift */; };
+		C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0629498F0400E35C6F /* SceneDelegate.swift */; };
+		C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0D29498F0600E35C6F /* Assets.xcassets */; };
+		C33B4B1129498F0600E35C6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0F29498F0600E35C6F /* LaunchScreen.storyboard */; };
+		C33B4B222949938C00E35C6F /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B212949938C00E35C6F /* HomeViewReactor.swift */; };
+		C33B4B242949942500E35C6F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B232949942500E35C6F /* HomeView.swift */; };
+		C33B4B262949942D00E35C6F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B252949942D00E35C6F /* HomeViewController.swift */; };
+		C33B4B28294999DA00E35C6F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B27294999DA00E35C6F /* APIService.swift */; };
+		C33B4B2A29499B4B00E35C6F /* Giphy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B2929499B4B00E35C6F /* Giphy.swift */; };
+		C33B4B2C294AAB9100E35C6F /* InduceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B2B294AAB9100E35C6F /* InduceSearchView.swift */; };
+		C33B4B2E294AABD800E35C6F /* InduceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B2D294AABD800E35C6F /* InduceSearchViewController.swift */; };
+		C33B4B31294AAC1700E35C6F /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B30294AAC1700E35C6F /* Extension+.swift */; };
+		C33B4B33294AAC3700E35C6F /* RelatedQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B32294AAC3700E35C6F /* RelatedQueryViewController.swift */; };
+		C33B4B35294AAC8E00E35C6F /* RelatedQueryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B34294AAC8E00E35C6F /* RelatedQueryView.swift */; };
+		C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B37294AAD1E00E35C6F /* RelatedQueryCell.swift */; };
+		C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B39294AB0BA00E35C6F /* RelatedQueryReactor.swift */; };
+		C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B3C294AFE0400E35C6F /* ItemCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageSearcher_ReactorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageSearcher-ReactorKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33B4B0429498F0400E35C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C33B4B0629498F0400E35C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C33B4B0D29498F0600E35C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C33B4B1029498F0600E35C6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C33B4B1229498F0600E35C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C33B4B212949938C00E35C6F /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
+		C33B4B232949942500E35C6F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C33B4B252949942D00E35C6F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C33B4B27294999DA00E35C6F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C33B4B2929499B4B00E35C6F /* Giphy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giphy.swift; sourceTree = "<group>"; };
+		C33B4B2B294AAB9100E35C6F /* InduceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InduceSearchView.swift; sourceTree = "<group>"; };
+		C33B4B2D294AABD800E35C6F /* InduceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InduceSearchViewController.swift; sourceTree = "<group>"; };
+		C33B4B30294AAC1700E35C6F /* Extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+.swift"; sourceTree = "<group>"; };
+		C33B4B32294AAC3700E35C6F /* RelatedQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryViewController.swift; sourceTree = "<group>"; };
+		C33B4B34294AAC8E00E35C6F /* RelatedQueryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryView.swift; sourceTree = "<group>"; };
+		C33B4B37294AAD1E00E35C6F /* RelatedQueryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryCell.swift; sourceTree = "<group>"; };
+		C33B4B39294AB0BA00E35C6F /* RelatedQueryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryReactor.swift; sourceTree = "<group>"; };
+		C33B4B3C294AFE0400E35C6F /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		CC5D2D86F85C3538E6E0CE55 /* Pods-ImageSearcher-ReactorKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageSearcher-ReactorKit.debug.xcconfig"; path = "Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit.debug.xcconfig"; sourceTree = "<group>"; };
+		DED5424C6B1A5A4A29968A6F /* Pods-ImageSearcher-ReactorKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageSearcher-ReactorKit.release.xcconfig"; path = "Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C33B4AFE29498F0400E35C6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FDF5390B8F5783ABA9829C8 /* Pods_ImageSearcher_ReactorKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A3B10D71DB0CE80E147E402 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD4E41A2E6B9B2C79E77060C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D2D86F85C3538E6E0CE55 /* Pods-ImageSearcher-ReactorKit.debug.xcconfig */,
+				DED5424C6B1A5A4A29968A6F /* Pods-ImageSearcher-ReactorKit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C33B4AF829498F0400E35C6F = {
+			isa = PBXGroup;
+			children = (
+				C33B4B0329498F0400E35C6F /* ImageSearcher-ReactorKit */,
+				C33B4B0229498F0400E35C6F /* Products */,
+				BD4E41A2E6B9B2C79E77060C /* Pods */,
+				0A3B10D71DB0CE80E147E402 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C33B4B0229498F0400E35C6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C33B4B0329498F0400E35C6F /* ImageSearcher-ReactorKit */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B1C294990ED00E35C6F /* Commons */,
+				C33B4B1B294990E700E35C6F /* Model */,
+				C33B4B1A294990E500E35C6F /* Network */,
+				C33B4B19294990CC00E35C6F /* Presentations */,
+				C33B4B18294990B700E35C6F /* Supporting Files */,
+				C33B4B1229498F0600E35C6F /* Info.plist */,
+			);
+			path = "ImageSearcher-ReactorKit";
+			sourceTree = "<group>";
+		};
+		C33B4B18294990B700E35C6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B0429498F0400E35C6F /* AppDelegate.swift */,
+				C33B4B0629498F0400E35C6F /* SceneDelegate.swift */,
+				C33B4B0D29498F0600E35C6F /* Assets.xcassets */,
+				C33B4B0F29498F0600E35C6F /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C33B4B19294990CC00E35C6F /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B3E294B10AA00E35C6F /* New Group */,
+				C33B4B202949917100E35C6F /* Home */,
+				C33B4B1F2949916F00E35C6F /* Induce */,
+				C33B4B1E2949916E00E35C6F /* RelatedQuery */,
+				C33B4B1D2949916C00E35C6F /* View */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		C33B4B1A294990E500E35C6F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B27294999DA00E35C6F /* APIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C33B4B1B294990E700E35C6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B2929499B4B00E35C6F /* Giphy.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C33B4B1C294990ED00E35C6F /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B2F294AAC0B00E35C6F /* Extension+ */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		C33B4B1D2949916C00E35C6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C33B4B1E2949916E00E35C6F /* RelatedQuery */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B36294AAD1200E35C6F /* Cell */,
+				C33B4B32294AAC3700E35C6F /* RelatedQueryViewController.swift */,
+				C33B4B34294AAC8E00E35C6F /* RelatedQueryView.swift */,
+				C33B4B39294AB0BA00E35C6F /* RelatedQueryReactor.swift */,
+			);
+			path = RelatedQuery;
+			sourceTree = "<group>";
+		};
+		C33B4B1F2949916F00E35C6F /* Induce */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B2B294AAB9100E35C6F /* InduceSearchView.swift */,
+				C33B4B2D294AABD800E35C6F /* InduceSearchViewController.swift */,
+			);
+			path = Induce;
+			sourceTree = "<group>";
+		};
+		C33B4B202949917100E35C6F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B3B294AFDE200E35C6F /* Cell */,
+				C33B4B212949938C00E35C6F /* HomeViewReactor.swift */,
+				C33B4B232949942500E35C6F /* HomeView.swift */,
+				C33B4B252949942D00E35C6F /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C33B4B2F294AAC0B00E35C6F /* Extension+ */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B30294AAC1700E35C6F /* Extension+.swift */,
+			);
+			path = "Extension+";
+			sourceTree = "<group>";
+		};
+		C33B4B36294AAD1200E35C6F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B37294AAD1E00E35C6F /* RelatedQueryCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C33B4B3B294AFDE200E35C6F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B3C294AFE0400E35C6F /* ItemCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C33B4B3E294B10AA00E35C6F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C33B4B0029498F0400E35C6F /* ImageSearcher-ReactorKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C33B4B1529498F0600E35C6F /* Build configuration list for PBXNativeTarget "ImageSearcher-ReactorKit" */;
+			buildPhases = (
+				205F3F893094CAC1EE5819B3 /* [CP] Check Pods Manifest.lock */,
+				C33B4AFD29498F0400E35C6F /* Sources */,
+				C33B4AFE29498F0400E35C6F /* Frameworks */,
+				C33B4AFF29498F0400E35C6F /* Resources */,
+				E6708940EB2FF123594DABB8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ImageSearcher-ReactorKit";
+			productName = "ImageSearcher-ReactorKit";
+			productReference = C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C33B4AF929498F0400E35C6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					C33B4B0029498F0400E35C6F = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = C33B4AFC29498F0400E35C6F /* Build configuration list for PBXProject "ImageSearcher-ReactorKit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C33B4AF829498F0400E35C6F;
+			productRefGroup = C33B4B0229498F0400E35C6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C33B4B0029498F0400E35C6F /* ImageSearcher-ReactorKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C33B4AFF29498F0400E35C6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33B4B1129498F0600E35C6F /* LaunchScreen.storyboard in Resources */,
+				C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		205F3F893094CAC1EE5819B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageSearcher-ReactorKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6708940EB2FF123594DABB8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C33B4AFD29498F0400E35C6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33B4B262949942D00E35C6F /* HomeViewController.swift in Sources */,
+				C33B4B31294AAC1700E35C6F /* Extension+.swift in Sources */,
+				C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */,
+				C33B4B33294AAC3700E35C6F /* RelatedQueryViewController.swift in Sources */,
+				C33B4B2E294AABD800E35C6F /* InduceSearchViewController.swift in Sources */,
+				C33B4B2C294AAB9100E35C6F /* InduceSearchView.swift in Sources */,
+				C33B4B2A29499B4B00E35C6F /* Giphy.swift in Sources */,
+				C33B4B242949942500E35C6F /* HomeView.swift in Sources */,
+				C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */,
+				C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */,
+				C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */,
+				C33B4B28294999DA00E35C6F /* APIService.swift in Sources */,
+				C33B4B222949938C00E35C6F /* HomeViewReactor.swift in Sources */,
+				C33B4B35294AAC8E00E35C6F /* RelatedQueryView.swift in Sources */,
+				C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C33B4B0F29498F0600E35C6F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C33B4B1029498F0600E35C6F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C33B4B1329498F0600E35C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C33B4B1429498F0600E35C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C33B4B1629498F0600E35C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC5D2D86F85C3538E6E0CE55 /* Pods-ImageSearcher-ReactorKit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LFRY7BQTRY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ImageSearcher-ReactorKit/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Pineone.ImageSearcher-ReactorKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C33B4B1729498F0600E35C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DED5424C6B1A5A4A29968A6F /* Pods-ImageSearcher-ReactorKit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LFRY7BQTRY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ImageSearcher-ReactorKit/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Pineone.ImageSearcher-ReactorKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C33B4AFC29498F0400E35C6F /* Build configuration list for PBXProject "ImageSearcher-ReactorKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33B4B1329498F0600E35C6F /* Debug */,
+				C33B4B1429498F0600E35C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C33B4B1529498F0600E35C6F /* Build configuration list for PBXNativeTarget "ImageSearcher-ReactorKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33B4B1629498F0600E35C6F /* Debug */,
+				C33B4B1729498F0600E35C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C33B4AF929498F0400E35C6F /* Project object */;
+}

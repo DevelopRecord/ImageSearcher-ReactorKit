@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (5.6.2)
+  - Kingfisher (7.4.1)
+  - ReactorKit (3.2.0):
+    - RxSwift (~> 6.0)
+    - WeakMapTable (~> 1.1)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SnapKit (5.6.0)
+  - Then (3.0.0)
+  - WeakMapTable (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - ReactorKit
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - Then
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - ReactorKit
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - Then
+    - WeakMapTable
+
+SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
+
+PODFILE CHECKSUM: ab2c2c67286810bf784143e055267e079f2feba0
+
+COCOAPODS: 1.11.3
