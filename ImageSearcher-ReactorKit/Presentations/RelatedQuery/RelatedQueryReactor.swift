@@ -8,22 +8,30 @@
 import ReactorKit
 import RxCocoa
 
+enum SearchType {
+    case modelSelected(Giphy)
+    case searchButtonClicked(String?)
+}
+
 class RelatedQueryReactor: Reactor {
     var disposeBag = DisposeBag()
     
+    var outputTrigger = PublishRelay<SearchType>()
+    var searchQuery = ""
+    
     enum Action {
         case searchQuery(String)
-        case searchButtonClicked
+        case selectedType(SearchType)
     }
     
     enum Mutation {
         case gifs([Giphy])
-        case selectedTitle(String)
+        case modelSelectedTitle(String?)
     }
     
     struct State {
         var gifs: [Giphy] = []
-        
+        var title: String?
     }
     
     let initialState: State = State()
@@ -31,18 +39,22 @@ class RelatedQueryReactor: Reactor {
 
 extension RelatedQueryReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        var searchQuery = BehaviorRelay<String>(value: "")
-        
         switch action {
-        case .searchQuery(let query):
-            print("ddd: \(query)")
-            searchQuery.accept(query)
-            return fetchGiphy(of: query).flatMap { giphy -> Observable<Mutation> in
+        case .searchQuery(let searchQuery):
+            self.searchQuery = searchQuery
+            return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
                 return .just(.gifs(giphy))
             }
-        case .searchButtonClicked:
-            return fetchGiphy(of: searchQuery.value).flatMap { giphy -> Observable<Mutation> in
-                return .just(.gifs(giphy))
+        case .selectedType(let type):
+            switch type {
+            case .modelSelected(let giphy):
+                outputTrigger.accept(.modelSelected(giphy))
+                return .empty()
+            case .searchButtonClicked:
+                outputTrigger.accept(.searchButtonClicked(searchQuery))
+                return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
+                    return .just(.gifs(giphy))
+                }
             }
         }
     }
@@ -53,8 +65,9 @@ extension RelatedQueryReactor {
         switch mutation {
         case .gifs(let giphy):
             newState.gifs = giphy
-        case .selectedTitle(let title):
+        case .modelSelectedTitle(let title):
             print("title: \(title)")
+            newState.title = title
         }
         
         return newState

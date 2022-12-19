@@ -54,13 +54,17 @@ extension RelatedQueryView {
         searchBar.rx.text
             .orEmpty
             .distinctUntilChanged()
-            .withUnretained(self)
-            .map { RelatedQueryReactor.Action.searchQuery($0.1) }
+            .map { RelatedQueryReactor.Action.searchQuery($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         searchBar.rx.searchButtonClicked
-            .map { RelatedQueryReactor.Action.searchButtonClicked }
+            .map { RelatedQueryReactor.Action.selectedType(.searchButtonClicked(nil)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        relatedQueryTableView.rx.modelSelected(Giphy.self)
+            .map { RelatedQueryReactor.Action.selectedType(.modelSelected($0)) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }

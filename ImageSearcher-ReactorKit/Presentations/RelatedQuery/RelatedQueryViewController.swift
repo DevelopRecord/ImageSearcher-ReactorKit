@@ -41,15 +41,20 @@ extension RelatedQueryViewController: ReactorKit.View {
     }
     
     private func bindAction(reactor: RelatedQueryReactor) {
-        subView.relatedQueryTableView.rx.modelSelected(Giphy.self)
-            .withUnretained(self)
-            .subscribe(onNext: { owner, giphy in
-                print("22: \(giphy.title)")
+        reactor.outputTrigger.withUnretained(self).bind(onNext: {
+            switch $0.1 {
+            case .modelSelected(let giphy):
+                print("modelSelected: \(giphy.title)")
                 let controller = HomeViewController()
                 controller.reactor = HomeViewReactor(wroteQuery: giphy.title)
-                owner.navigationController?.pushViewController(controller, animated: true)
-            }).disposed(by: disposeBag)
-            
+                $0.0.navigationController?.pushViewController(controller, animated: true)
+            case .searchButtonClicked(let selectedTitle):
+                print("searchButtonClicked: \(selectedTitle)")
+                let controller = HomeViewController()
+                controller.reactor = HomeViewReactor(wroteQuery: selectedTitle)
+                $0.0.navigationController?.pushViewController(controller, animated: true)
+            }
+        }).disposed(by: disposeBag)
         
     }
 }
