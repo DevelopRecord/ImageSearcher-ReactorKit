@@ -50,6 +50,6 @@ class RelatedQueryCell: UITableViewCell {
     }
     
     func setupRequest(with gif: Giphy) {
-        relatedQueryLabel.text = gif.title
+        relatedQueryLabel.text = gif.isEmptyTitle
     }
 }

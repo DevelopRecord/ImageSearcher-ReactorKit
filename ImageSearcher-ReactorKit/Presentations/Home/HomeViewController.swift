@@ -49,8 +49,7 @@ extension HomeViewController: ReactorKit.View {
         reactor.outputTrigger.withUnretained(self).bind(onNext: {
             switch $0.1 {
             case .modelSelected(let giphy):
-                print("detail: \(giphy)")
-                let controller = DetailViewController()
+                let controller = DetailViewController(giphy: giphy)
                 controller.modalPresentationStyle = .pageSheet
 
                 if let sheet = controller.sheetPresentationController {

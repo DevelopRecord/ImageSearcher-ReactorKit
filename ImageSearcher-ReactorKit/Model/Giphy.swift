@@ -17,6 +17,10 @@ struct Giphy: Decodable {
     var username: String?
     var title: String?
     var images: Image?
+    
+    var isEmptyTitle: String? {
+        return title?.isEmpty ?? false ? "No Title .." : title
+    }
 }
 
 struct Pagination: Decodable {

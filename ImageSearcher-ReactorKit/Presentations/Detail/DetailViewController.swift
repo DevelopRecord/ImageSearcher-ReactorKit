@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import ReactorKit
 
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
+    var disposeBag: DisposeBag = DisposeBag()
     lazy var subView = DetailView()
+    
+    init(giphy: Giphy) {
+        defer { self.reactor = DetailViewReactor(giphy: giphy) }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,5 +37,12 @@ class DetailViewController: UIViewController {
         subView.snp.makeConstraints {
             $0.directionalEdges.equalToSuperview()
         }
+    }
+}
+
+extension DetailViewController: ReactorKit.View {
+    func bind(reactor: DetailViewReactor) {
+        subView.bind(reactor: reactor)
+        
     }
 }

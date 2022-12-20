@@ -75,12 +75,15 @@ class DetailView: UIView {
     }
     
     private func bindState(reactor: DetailViewReactor) {
-        reactor.state.compactMap { $0.gifs }.withUnretained(self).bind { owner, giphy in
-            guard let urlString = giphy.images?.fixedWidthSmall?.url, let url = URL(string: urlString) else { return }
-            owner.thumbnailImage.kf.setImage(with: url)
-            owner.titleLabel.text = giphy.title
-            owner.usernameLabel.text = giphy.username
-            owner.urlLabel.text = giphy.url
+        reactor.state
+            .compactMap { $0.gifs }
+            .withUnretained(self)
+            .bind {
+                guard let urlString = $0.1.images?.fixedWidthSmall?.url, let url = URL(string: urlString) else { return }
+                $0.0.thumbnailImage.kf.setImage(with: url)
+                $0.0.titleLabel.text = $0.1.title
+                $0.0.usernameLabel.text = $0.1.username
+                $0.0.urlLabel.text = $0.1.url
         }.disposed(by: disposeBag)
     }
     

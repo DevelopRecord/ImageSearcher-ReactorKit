@@ -13,23 +13,32 @@ class DetailViewReactor: Reactor {
     }
     
     enum Mutation {
-        
+        case gifs(Giphy)
     }
     
     struct State {
-        var gifs = Giphy()
+        var gifs: Giphy
     }
     
-    let initialState: State = State()
+    let initialState: State
+    
+    init(giphy: Giphy) {
+        initialState = State(gifs: giphy)
+    }
 }
 
 extension DetailViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        return .empty()
+        
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
+        switch mutation {
+        case .gifs(let giphy):
+            newState.gifs = giphy
+        }
+        
         return newState
     }
 }
