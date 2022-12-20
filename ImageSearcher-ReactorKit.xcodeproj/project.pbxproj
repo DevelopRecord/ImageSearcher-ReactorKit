@@ -25,6 +25,9 @@
 		C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B37294AAD1E00E35C6F /* RelatedQueryCell.swift */; };
 		C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B39294AB0BA00E35C6F /* RelatedQueryReactor.swift */; };
 		C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B3C294AFE0400E35C6F /* ItemCell.swift */; };
+		C3BEAAA12950466C00C351F2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA02950466C00C351F2 /* DetailViewController.swift */; };
+		C3BEAAA32950467700C351F2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA22950467700C351F2 /* DetailView.swift */; };
+		C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA42950467F00C351F2 /* DetailViewReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		C33B4B37294AAD1E00E35C6F /* RelatedQueryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryCell.swift; sourceTree = "<group>"; };
 		C33B4B39294AB0BA00E35C6F /* RelatedQueryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryReactor.swift; sourceTree = "<group>"; };
 		C33B4B3C294AFE0400E35C6F /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		C3BEAAA02950466C00C351F2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C3BEAAA22950467700C351F2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C3BEAAA42950467F00C351F2 /* DetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactor.swift; sourceTree = "<group>"; };
 		CC5D2D86F85C3538E6E0CE55 /* Pods-ImageSearcher-ReactorKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageSearcher-ReactorKit.debug.xcconfig"; path = "Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit.debug.xcconfig"; sourceTree = "<group>"; };
 		DED5424C6B1A5A4A29968A6F /* Pods-ImageSearcher-ReactorKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageSearcher-ReactorKit.release.xcconfig"; path = "Target Support Files/Pods-ImageSearcher-ReactorKit/Pods-ImageSearcher-ReactorKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,11 +132,10 @@
 		C33B4B19294990CC00E35C6F /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				C33B4B3E294B10AA00E35C6F /* New Group */,
+				C33B4B3E294B10AA00E35C6F /* Detail */,
 				C33B4B202949917100E35C6F /* Home */,
 				C33B4B1F2949916F00E35C6F /* Induce */,
 				C33B4B1E2949916E00E35C6F /* RelatedQuery */,
-				C33B4B1D2949916C00E35C6F /* View */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -157,13 +162,6 @@
 				C33B4B2F294AAC0B00E35C6F /* Extension+ */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		C33B4B1D2949916C00E35C6F /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C33B4B1E2949916E00E35C6F /* RelatedQuery */ = {
@@ -221,11 +219,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C33B4B3E294B10AA00E35C6F /* New Group */ = {
+		C33B4B3E294B10AA00E35C6F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				C3BEAAA42950467F00C351F2 /* DetailViewReactor.swift */,
+				C3BEAAA22950467700C351F2 /* DetailView.swift */,
+				C3BEAAA02950466C00C351F2 /* DetailViewController.swift */,
 			);
-			path = "New Group";
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,11 +345,13 @@
 			files = (
 				C33B4B262949942D00E35C6F /* HomeViewController.swift in Sources */,
 				C33B4B31294AAC1700E35C6F /* Extension+.swift in Sources */,
+				C3BEAAA32950467700C351F2 /* DetailView.swift in Sources */,
 				C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */,
 				C33B4B33294AAC3700E35C6F /* RelatedQueryViewController.swift in Sources */,
 				C33B4B2E294AABD800E35C6F /* InduceSearchViewController.swift in Sources */,
 				C33B4B2C294AAB9100E35C6F /* InduceSearchView.swift in Sources */,
 				C33B4B2A29499B4B00E35C6F /* Giphy.swift in Sources */,
+				C3BEAAA12950466C00C351F2 /* DetailViewController.swift in Sources */,
 				C33B4B242949942500E35C6F /* HomeView.swift in Sources */,
 				C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */,
 				C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */,
@@ -356,6 +359,7 @@
 				C33B4B28294999DA00E35C6F /* APIService.swift in Sources */,
 				C33B4B222949938C00E35C6F /* HomeViewReactor.swift in Sources */,
 				C33B4B35294AAC8E00E35C6F /* RelatedQueryView.swift in Sources */,
+				C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */,
 				C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,7 +429,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -480,7 +484,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -506,7 +510,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -536,7 +540,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

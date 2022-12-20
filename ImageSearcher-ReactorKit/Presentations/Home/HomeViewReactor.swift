@@ -10,10 +10,15 @@ import RxCocoa
 import ReactorKit
 
 class HomeViewReactor: Reactor {
+    enum SelectType {
+        case modelSelected(Giphy)
+    }
+    
     enum Action {
         // 뷰 로드시 데이터 요청트리거나 사용자 액션들
         case refreshControl
         case viewLoaded
+        case selectedType(SelectType)
     }
     
     enum Mutation {
@@ -29,6 +34,7 @@ class HomeViewReactor: Reactor {
     
     let initialState: State = State()
     
+    var outputTrigger = PublishRelay<SelectType>()
     var wroteQuery: String!
     
     init(wroteQuery: String?) {
@@ -49,6 +55,12 @@ extension HomeViewReactor {
         case .viewLoaded:
             return fetchGiphy(of: wroteQuery).flatMap { giphy -> Observable<Mutation> in
                 return .just(.gifs(giphy))
+            }
+        case .selectedType(let type):
+            switch type {
+            case .modelSelected(let giphy):
+                outputTrigger.accept(.modelSelected(giphy))
+                return .empty()
             }
         }
     }

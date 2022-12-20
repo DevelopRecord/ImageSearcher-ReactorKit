@@ -50,6 +50,11 @@ class HomeView: UIView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        itemCollectionView.rx.modelSelected(Giphy.self)
+            .throttle(.milliseconds(250), latest: false, scheduler: MainScheduler.instance)
+            .map { HomeViewReactor.Action.selectedType(.modelSelected($0)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindState(reactor: HomeViewReactor) {
