@@ -1,5 +1,5 @@
 //
-//  HomeViewReactor.swift
+//  ItemViewReactor.swift
 //  ImageSearcher-ReactorKit
 //
 //  Created by 이재혁 on 2022/12/14.
@@ -8,8 +8,15 @@
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RxFlow
 
-class HomeViewReactor: Reactor {
+class ItemViewReactor: Reactor, Stepper {
+    var steps = PublishRelay<Step>()
+    
+    var initialStep: Step {
+        return AppStep.itemViewInitialized
+    }
+    
     enum SelectType {
         case modelSelected(Giphy)
     }
@@ -42,7 +49,7 @@ class HomeViewReactor: Reactor {
     }
 }
 
-extension HomeViewReactor {
+extension ItemViewReactor {
     // mutate(), reduce() 등 과 같은 메서드 생성하여 데이터 변형 및 가공
     // TODO: transform()도 여기 해당되나? transform의 역할이 설명을 봐도 어떤 역할인지 명확한 이해가 안됨.
     
@@ -76,7 +83,7 @@ extension HomeViewReactor {
     }
 }
 
-extension HomeViewReactor {
+extension ItemViewReactor {
     // 여기에선 API 호출하는 메서드 생성
     private func fetchGiphy(of query: String) -> Observable<[Giphy]> {
         let response = APIService.shared.fetchGifs(query: query)

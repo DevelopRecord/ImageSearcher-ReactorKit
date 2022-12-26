@@ -15,6 +15,15 @@ class RelatedQueryViewController: UIViewController {
     
     let subView = RelatedQueryView()
     
+    init(reactor: RelatedQueryReactor) {
+        defer { self.reactor = reactor }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -37,24 +46,22 @@ class RelatedQueryViewController: UIViewController {
 extension RelatedQueryViewController: ReactorKit.View {
     func bind(reactor: RelatedQueryReactor) {
         subView.bind(reactor: reactor)
-        bindAction(reactor: reactor)
     }
     
-    private func bindAction(reactor: RelatedQueryReactor) {
-        reactor.outputTrigger.withUnretained(self).bind(onNext: {
-            switch $0.1 {
-            case .modelSelected(let giphy):
-                print("modelSelected: \(giphy.title)")
-                let controller = HomeViewController()
-                controller.reactor = HomeViewReactor(wroteQuery: giphy.title)
-                $0.0.navigationController?.pushViewController(controller, animated: true)
-            case .searchButtonClicked(let selectedTitle):
-                print("searchButtonClicked: \(selectedTitle)")
-                let controller = HomeViewController()
-                controller.reactor = HomeViewReactor(wroteQuery: selectedTitle)
-                $0.0.navigationController?.pushViewController(controller, animated: true)
-            }
-        }).disposed(by: disposeBag)
-        
-    }
+//    private func bindAction(reactor: RelatedQueryReactor) {
+//        reactor.outputTrigger.withUnretained(self).bind(onNext: {
+//            switch $0.1 {
+//            case .modelSelected(let giphy):
+//                let controller = ItemViewController()
+//                controller.reactor = ItemViewReactor(wroteQuery: giphy.title)
+//                $0.0.navigationController?.pushViewController(controller, animated: true)
+//            case .searchButtonClicked(let selectedTitle):
+//                let controller = ItemViewController()
+//                controller.reactor = ItemViewReactor(wroteQuery: selectedTitle)
+//                $0.0.navigationController?.pushViewController(controller, animated: true)
+//            }
+//        }).disposed(by: disposeBag)
+//
+//    }
+    
 }

@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  ItemView.swift
 //  ImageSearcher-ReactorKit
 //
 //  Created by 이재혁 on 2022/12/14.
@@ -8,12 +8,12 @@
 import UIKit
 import RxSwift
 
-class HomeView: UIView {
+class ItemView: UIView {
     
     // MARK: - Properties
     var disposeBag = DisposeBag()
     
-    private let refreshControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
     
     lazy var itemCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .clear
@@ -37,27 +37,27 @@ class HomeView: UIView {
         }
     }
     
-    func bind(reactor: HomeViewReactor) {
+    func bind(reactor: ItemViewReactor) {
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
     }
     
-    private func bindAction(reactor: HomeViewReactor) {
+    private func bindAction(reactor: ItemViewReactor) {
         refreshControl.rx.controlEvent(.valueChanged)
             .withUnretained(self)
             .do(onNext: { $0.0.refreshCollectionView() })
-            .map { _ in HomeViewReactor.Action.refreshControl }
+            .map { _ in ItemViewReactor.Action.refreshControl }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         itemCollectionView.rx.modelSelected(Giphy.self)
             .throttle(.milliseconds(250), latest: false, scheduler: MainScheduler.instance)
-            .map { HomeViewReactor.Action.selectedType(.modelSelected($0)) }
+            .map { ItemViewReactor.Action.selectedType(.modelSelected($0)) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
-    private func bindState(reactor: HomeViewReactor) {
+    private func bindState(reactor: ItemViewReactor) {
         itemCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
         reactor.state
@@ -75,7 +75,7 @@ class HomeView: UIView {
     }
 }
 
-extension HomeView: UICollectionViewDelegateFlowLayout {
+extension ItemView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = bounds.width / 4 - 2
         return CGSize(width: width, height: width)

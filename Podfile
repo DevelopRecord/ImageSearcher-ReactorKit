@@ -9,6 +9,7 @@ target 'ImageSearcher-ReactorKit' do
 	pod 'ReactorKit'
 	pod 'RxSwift'
 	pod 'RxCocoa'
+	pod 'RxFlow'
 	pod 'SnapKit'
 	pod 'Then'
   # Pods for ImageSearcher-ReactorKit

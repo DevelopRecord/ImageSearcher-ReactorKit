@@ -14,6 +14,7 @@ class RelatedQueryView: UIView {
     
     lazy var relatedQueryTableView = UITableView().then {
         $0.backgroundColor = .clear
+        $0.rowHeight = 40
         $0.delegate = self
         $0.dataSource = self
         $0.register(RelatedQueryCell.self, forCellReuseIdentifier: RelatedQueryCell.identifier)
@@ -41,6 +42,9 @@ class RelatedQueryView: UIView {
         relatedQueryTableView.snp.makeConstraints {
             $0.directionalEdges.equalToSuperview()
         }
+        
+        
+            
     }
 }
 

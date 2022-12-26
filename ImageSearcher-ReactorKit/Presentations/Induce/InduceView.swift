@@ -1,5 +1,5 @@
 //
-//  InduceSearchView.swift
+//  InduceView.swift
 //  ImageSearcher-ReactorKit
 //
 //  Created by 이재혁 on 2022/12/15.
@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-class InduceSearchView: UIView {
+class InduceView: UIView {
     
     private lazy var induceLabel = UILabel().then {
         $0.text = "아무 키워드나 검색해 보세요."

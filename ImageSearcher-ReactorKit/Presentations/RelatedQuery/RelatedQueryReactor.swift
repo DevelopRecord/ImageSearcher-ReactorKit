@@ -7,13 +7,16 @@
 
 import ReactorKit
 import RxCocoa
+import RxFlow
 
 enum SearchType {
     case modelSelected(Giphy)
     case searchButtonClicked(String?)
 }
 
-class RelatedQueryReactor: Reactor {
+class RelatedQueryReactor: Reactor, Stepper {
+    var steps = PublishRelay<Step>()
+    
     var disposeBag = DisposeBag()
     
     var outputTrigger = PublishRelay<SearchType>()
@@ -45,16 +48,19 @@ extension RelatedQueryReactor {
             return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
                 return .just(.gifs(giphy))
             }
+            // flatten하게 만들어주고 (2차원배열 -> 1차원배열), optional binding
         case .selectedType(let type):
             switch type {
             case .modelSelected(let giphy):
                 outputTrigger.accept(.modelSelected(giphy))
+                steps.accept(AppStep.relatedQueryIsPicked(giphy))
                 return .empty()
             case .searchButtonClicked:
                 outputTrigger.accept(.searchButtonClicked(searchQuery))
-                return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
-                    return .just(.gifs(giphy))
-                }
+//                return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
+//                    return .just(.gifs(giphy))
+//                }
+                return .empty()
             }
         }
     }
@@ -66,7 +72,6 @@ extension RelatedQueryReactor {
         case .gifs(let giphy):
             newState.gifs = giphy
         case .modelSelectedTitle(let title):
-            print("title: \(title)")
             newState.title = title
         }
         
