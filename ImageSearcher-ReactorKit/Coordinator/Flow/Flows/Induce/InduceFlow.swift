@@ -26,10 +26,7 @@ class InduceFlow: Flow {
             return coordinateToInduceboard()
         case .relatedQueryViewIsRequired:
             return coordinateToRelatedQueryView()
-        default:
-            print("asdfasdfasdf")
-            return
-                .none
+        default: return .none
         }
     }
     

@@ -13,10 +13,6 @@ import RxFlow
 class ItemViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
-    var initialStep: Step {
-        return AppStep.itemViewInitialized
-    }
-    
     enum SelectType {
         case modelSelected(Giphy)
     }
@@ -66,6 +62,7 @@ extension ItemViewReactor {
         case .selectedType(let type):
             switch type {
             case .modelSelected(let giphy):
+                steps.accept(AppStep.GifItemIsPicked(giphy))
                 outputTrigger.accept(.modelSelected(giphy))
                 return .empty()
             }

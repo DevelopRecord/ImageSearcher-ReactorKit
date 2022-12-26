@@ -29,7 +29,6 @@ class RelatedQueryReactor: Reactor, Stepper {
     
     enum Mutation {
         case gifs([Giphy])
-        case modelSelectedTitle(String?)
     }
     
     struct State {
@@ -48,7 +47,7 @@ extension RelatedQueryReactor {
             return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
                 return .just(.gifs(giphy))
             }
-            // flatten하게 만들어주고 (2차원배열 -> 1차원배열), optional binding
+
         case .selectedType(let type):
             switch type {
             case .modelSelected(let giphy):
@@ -56,10 +55,8 @@ extension RelatedQueryReactor {
                 steps.accept(AppStep.relatedQueryIsPicked(giphy))
                 return .empty()
             case .searchButtonClicked:
-                outputTrigger.accept(.searchButtonClicked(searchQuery))
-//                return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
-//                    return .just(.gifs(giphy))
-//                }
+                steps.accept(AppStep.searchButtonIsClicked(searchQuery))
+                
                 return .empty()
             }
         }
@@ -71,8 +68,6 @@ extension RelatedQueryReactor {
         switch mutation {
         case .gifs(let giphy):
             newState.gifs = giphy
-        case .modelSelectedTitle(let title):
-            newState.title = title
         }
         
         return newState

@@ -54,30 +54,5 @@ extension ItemViewController: ReactorKit.View {
             .map { _ in ItemViewReactor.Action.viewLoaded }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        reactor.outputTrigger.withUnretained(self).bind(onNext: {
-            switch $0.1 {
-            case .modelSelected(let giphy):
-                let controller = DetailViewController(giphy: giphy)
-                controller.modalPresentationStyle = .pageSheet
-
-                if let sheet = controller.sheetPresentationController {
-                    //지원할 크기 지정
-                    sheet.detents = [.medium()]
-                    //크기 변하는거 감지
-                    sheet.delegate = self
-                    //시트 상단에 그래버 표시 (기본 값은 false)
-                    sheet.prefersGrabberVisible = true
-                }
-                $0.0.present(controller, animated: true)
-            }
-        }).disposed(by: disposeBag)
-    }
-}
-
-extension ItemViewController: UISheetPresentationControllerDelegate {
-    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
-        //크기 변경 됐을 경우
-        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
     }
 }

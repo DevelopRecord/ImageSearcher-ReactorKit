@@ -6,8 +6,12 @@
 //
 
 import ReactorKit
+import RxCocoa
+import RxFlow
 
-class DetailViewReactor: Reactor {
+class DetailViewReactor: Reactor, Stepper {
+    var steps = PublishRelay<Step>()
+    
     enum Action {
         
     }

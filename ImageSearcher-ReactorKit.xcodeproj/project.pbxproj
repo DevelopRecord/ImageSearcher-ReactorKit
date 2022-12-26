@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FDF5390B8F5783ABA9829C8 /* Pods_ImageSearcher_ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */; };
 		C3001D952959619900979875 /* ImageSearcher_ReactorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001D942959619900979875 /* ImageSearcher_ReactorKitTests.swift */; };
+		C3001D9C2959954700979875 /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001D9B2959954700979875 /* DetailFlow.swift */; };
 		C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0429498F0400E35C6F /* AppDelegate.swift */; };
 		C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0629498F0400E35C6F /* SceneDelegate.swift */; };
 		C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0D29498F0600E35C6F /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageSearcher_ReactorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3001D922959619900979875 /* ImageSearcher-ReactorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageSearcher-ReactorKitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3001D942959619900979875 /* ImageSearcher_ReactorKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearcher_ReactorKitTests.swift; sourceTree = "<group>"; };
+		C3001D9B2959954700979875 /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
 		C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageSearcher-ReactorKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B4B0429498F0400E35C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C33B4B0629498F0400E35C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 		C34E782B295420CE0008CD63 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				C3001D9B2959954700979875 /* DetailFlow.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				C33B4B2A29499B4B00E35C6F /* Giphy.swift in Sources */,
 				C3BEAAA12950466C00C351F2 /* DetailViewController.swift in Sources */,
 				C33B4B242949942500E35C6F /* ItemView.swift in Sources */,
+				C3001D9C2959954700979875 /* DetailFlow.swift in Sources */,
 				C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */,
 				C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */,
 				C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */,

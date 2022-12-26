@@ -14,11 +14,11 @@ enum AppStep: Step {
     // 검색버튼 탭
     case relatedQueryViewIsRequired
     
-    // GIF 선택
-    case itemViewIsRequired(Giphy)
-    
     // 연관검색어 선택
     case relatedQueryIsPicked(Giphy)
     
-    case itemViewInitialized
+    // 검색버튼 클릭
+    case searchButtonIsClicked(String?)
+    
+    case GifItemIsPicked(Giphy)
 }

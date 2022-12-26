@@ -18,24 +18,27 @@ class ItemFlow: Flow {
         guard let step = step as? AppStep else { return .none }
         
         switch step {
-        case .relatedQueryIsPicked(let giphy):
-            print("asdfasdf")
-        case .itemViewInitialized:
-            print("itemViewInitialized")
-            return test()
+        case .GifItemIsPicked(let giphy):
+            return coordinateToDetailView(of: giphy)
         default: return .none
         }
-        return .none
     }
     
-    private func test() -> FlowContributors {
-        let reactor = ItemViewReactor(wroteQuery: nil)
-        let flow = ItemFlow()
-        let controller = ItemViewController(reactor: reactor)
-        
-//        self.rootViewController.pushViewController(controller, animated: true)
+    private func coordinateToDetailView(of giphy: Giphy) -> RxFlow.FlowContributors {
+        let reactor = DetailViewReactor(giphy: giphy)
+        let flow = DetailFlow()
+        let controller = DetailViewController(giphy: giphy)
+        controller.modalPresentationStyle = .pageSheet
+
+        if let sheet = controller.sheetPresentationController {
+            //지원할 크기 지정
+            sheet.detents = [.medium()]
+            //시트 상단에 그래버 표시 (기본 값은 false)
+            sheet.prefersGrabberVisible = true
+        }
+        InduceFlow.rootViewController.present(controller, animated: true)
         
         return .none
-        
+//        return .one(flowContributor: .contribute(withNextPresentable: controller, withNextStepper: reactor))
     }
 }
