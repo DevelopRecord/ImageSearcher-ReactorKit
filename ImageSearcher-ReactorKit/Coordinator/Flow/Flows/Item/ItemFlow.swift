@@ -38,7 +38,7 @@ class ItemFlow: Flow {
         }
         InduceFlow.rootViewController.present(controller, animated: true)
         
-        return .none
-//        return .one(flowContributor: .contribute(withNextPresentable: controller, withNextStepper: reactor))
+        return .one(flowContributor: .contribute(withNextPresentable: flow,
+                                                 withNextStepper: reactor))
     }
 }

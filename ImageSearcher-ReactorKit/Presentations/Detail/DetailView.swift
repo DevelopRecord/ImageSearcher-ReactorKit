@@ -28,9 +28,10 @@ class DetailView: UIView {
         $0.font = .systemFont(ofSize: 20)
     }
     
-    lazy var urlLabel = UILabel().then {
-        $0.text = "url Label"
-        $0.font = .systemFont(ofSize: 20)
+    lazy var urlButton = UIButton().then {
+        $0.setTitle("URL Label", for: .normal)
+        $0.setTitleColor(.systemBlue, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 20)
     }
     
     lazy var infoStackView = UIStackView().then {
@@ -57,7 +58,7 @@ class DetailView: UIView {
             $0.leading.trailing.equalToSuperview()
         }
         
-        [titleLabel, usernameLabel, urlLabel].forEach { infoStackView.addArrangedSubview($0) }
+        [titleLabel, usernameLabel, urlButton].forEach { infoStackView.addArrangedSubview($0) }
         infoStackView.snp.makeConstraints {
             $0.height.equalTo(120)
             $0.top.equalTo(thumbnailImage.snp.bottom)
@@ -72,6 +73,10 @@ class DetailView: UIView {
     
     private func bindAction(reactor: DetailViewReactor) {
         // Other Actions ...
+        urlButton.rx.tap
+            .map { DetailViewReactor.Action.urlButtonClicked(reactor.currentState.gifs.url) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func bindState(reactor: DetailViewReactor) {
@@ -81,9 +86,9 @@ class DetailView: UIView {
             .bind {
                 guard let urlString = $0.1.images?.fixedWidthSmall?.url, let url = URL(string: urlString) else { return }
                 $0.0.thumbnailImage.kf.setImage(with: url)
-                $0.0.titleLabel.text = $0.1.title
-                $0.0.usernameLabel.text = $0.1.username
-                $0.0.urlLabel.text = $0.1.url
+                $0.0.titleLabel.text = "TITLE: \($0.1.title ?? "")"
+                $0.0.usernameLabel.text = "USER NAME: \($0.1.username ?? "")"
+                $0.0.urlButton.setTitle($0.1.url, for: .normal)
         }.disposed(by: disposeBag)
     }
     

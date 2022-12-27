@@ -15,8 +15,4 @@ struct AppStepper: Stepper {
     var initialStep: Step {
         return AppStep.induceboardIsRequired
     }
-    
-//    func readyToEmitSteps() {
-//        steps.accept(AppStep.induceboardIsRequired)
-//    }
 }

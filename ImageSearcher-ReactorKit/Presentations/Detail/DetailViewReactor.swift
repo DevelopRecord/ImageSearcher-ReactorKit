@@ -13,7 +13,7 @@ class DetailViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     enum Action {
-        
+        case urlButtonClicked(String?)
     }
     
     enum Mutation {
@@ -33,7 +33,12 @@ class DetailViewReactor: Reactor, Stepper {
 
 extension DetailViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        
+        switch action {
+        case .urlButtonClicked(let urlString):
+            steps.accept(AppStep.safariUrlButtonIsClicked(urlString))
+//            print("url Button Clicked: \(urlString)")
+            return .empty()
+        }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {

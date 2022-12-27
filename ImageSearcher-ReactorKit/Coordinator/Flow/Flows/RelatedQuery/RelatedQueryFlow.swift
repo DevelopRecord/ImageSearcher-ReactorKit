@@ -27,7 +27,7 @@ class RelatedQueryFlow: Flow {
         }
     }
     
-    private func coordinateToGIfItemView(giphy giphy: Giphy) -> RxFlow.FlowContributors {
+    private func coordinateToGIfItemView(giphy: Giphy) -> RxFlow.FlowContributors {
         let reactor = ItemViewReactor(wroteQuery: giphy.title)
         let controller = ItemViewController(reactor: reactor)
         let flow = ItemFlow()

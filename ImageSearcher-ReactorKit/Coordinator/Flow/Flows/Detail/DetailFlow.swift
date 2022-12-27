@@ -18,7 +18,12 @@ class DetailFlow: Flow {
         guard let step = step as? AppStep else { return .none }
         
         switch step {
-        default: return .none
+        case .safariUrlButtonIsClicked(let urlString):
+            print("URL STRING: \(urlString)")
+            return .none
+        default:
+            print("asdfasdf")
+            return .none
         }
     }
     
