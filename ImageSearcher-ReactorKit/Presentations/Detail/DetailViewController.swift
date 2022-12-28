@@ -14,8 +14,13 @@ class DetailViewController: UIViewController {
     var disposeBag: DisposeBag = DisposeBag()
     lazy var subView = DetailView()
     
-    init(giphy: Giphy) {
-        defer { self.reactor = DetailViewReactor(giphy: giphy) }
+//    init(giphy: Giphy) {
+//        defer { self.reactor = DetailViewReactor(giphy: giphy) }
+//        super.init(nibName: nil, bundle: nil)
+//    }
+    
+    init(reactor: DetailViewReactor) {
+        defer { self.reactor = reactor }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,6 +48,5 @@ class DetailViewController: UIViewController {
 extension DetailViewController: ReactorKit.View {
     func bind(reactor: DetailViewReactor) {
         subView.bind(reactor: reactor)
-        
     }
 }

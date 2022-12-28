@@ -12,7 +12,7 @@ class ItemFlow: Flow {
         return self.rootViewController
     }
     
-    let rootViewController = UIViewController()
+    let rootViewController = UINavigationController()
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
@@ -27,9 +27,9 @@ class ItemFlow: Flow {
     private func coordinateToDetailView(of giphy: Giphy) -> RxFlow.FlowContributors {
         let reactor = DetailViewReactor(giphy: giphy)
         let flow = DetailFlow()
-        let controller = DetailViewController(giphy: giphy)
+        let controller = DetailViewController(reactor: reactor)
         controller.modalPresentationStyle = .pageSheet
-
+        
         if let sheet = controller.sheetPresentationController {
             //지원할 크기 지정
             sheet.detents = [.medium()]

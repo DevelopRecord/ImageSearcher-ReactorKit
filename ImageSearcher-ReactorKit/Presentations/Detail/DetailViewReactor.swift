@@ -40,14 +40,4 @@ extension DetailViewReactor {
             return .empty()
         }
     }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
-        switch mutation {
-        case .gifs(let giphy):
-            newState.gifs = giphy
-        }
-        
-        return newState
-    }
 }

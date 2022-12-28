@@ -19,7 +19,6 @@ class RelatedQueryReactor: Reactor, Stepper {
     
     var disposeBag = DisposeBag()
     
-    var outputTrigger = PublishRelay<SearchType>()
     var searchQuery = ""
     
     enum Action {
@@ -51,7 +50,6 @@ extension RelatedQueryReactor {
         case .selectedType(let type):
             switch type {
             case .modelSelected(let giphy):
-                outputTrigger.accept(.modelSelected(giphy))
                 steps.accept(AppStep.relatedQueryIsPicked(giphy))
                 return .empty()
             case .searchButtonClicked:

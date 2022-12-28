@@ -34,7 +34,6 @@ class RelatedQueryFlow: Flow {
         
         InduceFlow.rootViewController.pushViewController(controller, animated: true)
         
-        
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))
     }

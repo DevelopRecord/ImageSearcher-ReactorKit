@@ -43,11 +43,6 @@ extension AppFlow {
         }
         let nextStep = OneStepper(withSingleStep: AppStep.induceboardIsRequired)
         
-        Flows.use(induceFlow, when: .created) { [weak self] flowRoot in
-            guard let self = self else { return }
-            self.rootWindow.rootViewController = flowRoot
-        }
-        
         return .one(flowContributor: .contribute(withNextPresentable: induceFlow,
                                                  withNextStepper: nextStep))
     }

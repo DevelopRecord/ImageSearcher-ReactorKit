@@ -37,7 +37,6 @@ class ItemViewReactor: Reactor, Stepper {
     
     let initialState: State = State()
     
-    var outputTrigger = PublishRelay<SelectType>()
     var wroteQuery: String!
     
     init(wroteQuery: String?) {
@@ -63,7 +62,6 @@ extension ItemViewReactor {
             switch type {
             case .modelSelected(let giphy):
                 steps.accept(AppStep.GifItemIsPicked(giphy))
-                outputTrigger.accept(.modelSelected(giphy))
                 return .empty()
             }
         }

@@ -28,8 +28,8 @@ class DetailView: UIView {
         $0.font = .systemFont(ofSize: 20)
     }
     
-    lazy var urlButton = UIButton().then {
-        $0.setTitle("URL Label", for: .normal)
+    lazy var urlButton = UIButton(type: .system).then {
+        $0.setTitle("사파리 이동", for: .normal)
         $0.setTitleColor(.systemBlue, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 20)
     }
@@ -51,18 +51,23 @@ class DetailView: UIView {
     
     // MARK: - Methods
     private func setupLayout() {
-        addSubviews([thumbnailImage, infoStackView])
+        addSubviews([thumbnailImage, infoStackView, urlButton])
         thumbnailImage.snp.makeConstraints {
             $0.height.equalTo(180)
             $0.top.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview()
         }
         
-        [titleLabel, usernameLabel, urlButton].forEach { infoStackView.addArrangedSubview($0) }
+        [titleLabel, usernameLabel].forEach { infoStackView.addArrangedSubview($0) }
         infoStackView.snp.makeConstraints {
             $0.height.equalTo(120)
             $0.top.equalTo(thumbnailImage.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        urlButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
     
@@ -88,15 +93,7 @@ class DetailView: UIView {
                 $0.0.thumbnailImage.kf.setImage(with: url)
                 $0.0.titleLabel.text = "TITLE: \($0.1.title ?? "")"
                 $0.0.usernameLabel.text = "USER NAME: \($0.1.username ?? "")"
-                $0.0.urlButton.setTitle($0.1.url, for: .normal)
+//                $0.0.urlButton.setTitle($0.1.url, for: .normal)
         }.disposed(by: disposeBag)
-    }
-    
-    func setupRequest(of giphy: Giphy) {
-        guard let urlString = giphy.images?.fixedWidthSmall?.url, let url = URL(string: urlString) else { return }
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.thumbnailImage.kf.setImage(with: url)
-        }
     }
 }
