@@ -11,13 +11,13 @@ import Then
 class InduceView: UIView {
     
     private lazy var induceLabel = UILabel().then {
-        $0.text = "아무 키워드나 검색해 보세요."
+        $0.text = "아무 키워드나 검색해 보아요."
         $0.font = UIFont.boldSystemFont(ofSize: 30)
     }
     
     private lazy var descriptionLabel = UILabel().then {
-        $0.text = "검색해 보세요."
-        $0.font = UIFont.systemFont(ofSize: 24)
+        $0.text = "👀"
+        $0.font = UIFont.systemFont(ofSize: 32)
     }
     
     private lazy var induceView = UIView().then {

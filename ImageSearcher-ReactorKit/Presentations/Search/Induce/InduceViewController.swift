@@ -35,7 +35,7 @@ class InduceViewController: UIViewController {
     
     private func setupLayout() {
         view.backgroundColor = .systemBackground
-        setupNavigationBar(title: "메인")
+        self.title = "검색"
         
         navigationItem.setRightBarButton(barButton, animated: true)
         
@@ -57,5 +57,9 @@ extension InduceViewController: ReactorKit.View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        self.rx.viewWillAppear
+            .map { _ in InduceViewReactor.Action.viewAppear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }

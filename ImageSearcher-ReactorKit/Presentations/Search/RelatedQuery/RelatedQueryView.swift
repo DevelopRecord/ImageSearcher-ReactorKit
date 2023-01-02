@@ -24,6 +24,19 @@ class RelatedQueryView: UIView {
         $0.placeholder = "검색어 입력"
     }
     
+    lazy var emptyView = UIView().then {
+        $0.backgroundColor = .clear
+        
+        let label = UILabel().then {
+            $0.text = "결과 없음"
+            $0.font = .boldSystemFont(ofSize: 24)
+        }
+        $0.addSubview(label)
+        label.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
+    
     // MARK: - Outlets
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,9 +55,6 @@ class RelatedQueryView: UIView {
         relatedQueryTableView.snp.makeConstraints {
             $0.directionalEdges.equalToSuperview()
         }
-        
-        
-            
     }
 }
 
@@ -80,7 +90,11 @@ extension RelatedQueryView {
         
         reactor.state
             .compactMap { $0.gifs }
-            .bind(to: relatedQueryTableView.rx.items(cellIdentifier: RelatedQueryCell.identifier, cellType: RelatedQueryCell.self)) { index, gifs, cell in
+            .do(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.relatedQueryTableView.backgroundView = $0.isEmpty ? self.emptyView : nil
+            })
+            .bind(to: relatedQueryTableView.rx.items(cellIdentifier: RelatedQueryCell.identifier, cellType: RelatedQueryCell.self)) { _, gifs, cell in
                 cell.setupRequest(with: gifs)
             }.disposed(by: disposeBag)
     }

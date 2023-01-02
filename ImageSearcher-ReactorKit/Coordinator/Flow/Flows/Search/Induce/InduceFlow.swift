@@ -26,27 +26,41 @@ class InduceFlow: Flow {
             return coordinateToInduceboard()
         case .relatedQueryViewIsRequired:
             return coordinateToRelatedQueryView()
+        case .back:
+            return coordinateToBack()
         default: return .none
         }
     }
     
-    private func coordinateToInduceboard() -> RxFlow.FlowContributors {
+    private func coordinateToInduceboard() -> FlowContributors {
         let reactor = InduceViewReactor()
         let flow = InduceFlow()
         let controller = InduceViewController(reactor: reactor)
-        InduceFlow.rootViewController.pushViewController(controller, animated: true)
+        
+        InduceFlow.rootViewController.tabBarItem.title = "검색"
+        InduceFlow.rootViewController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        InduceFlow.rootViewController.setViewControllers([controller], animated: true)
+        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = false
         
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))
     }
     
-    private func coordinateToRelatedQueryView() -> RxFlow.FlowContributors {
+    private func coordinateToRelatedQueryView() -> FlowContributors {
         let reactor = RelatedQueryReactor()
         let flow = RelatedQueryFlow()
         let controller = RelatedQueryViewController(reactor: reactor)
         InduceFlow.rootViewController.pushViewController(controller, animated: true)
+        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = true
         
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))
+    }
+    
+    private func coordinateToBack() -> FlowContributors {
+        InduceFlow.rootViewController.popViewController(animated: true)
+        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = false
+        
+        return .none
     }
 }

@@ -21,29 +21,28 @@ final class AppFlow: RxFlow.Flow {
     
     /// 검색유도 화면으로 이동
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
-        guard let step = step as? AppStep else {
-            return RxFlow.FlowContributors.none
-        }
+        guard let step = step as? AppStep else { return FlowContributors.none }
         
         switch step {
-        /// 앱을 실행하고 검색 유도 화면을 보여줘야 함.
-        case .induceboardIsRequired:
-            return coordinateToInduceboard()
+        case .mainTabbarIsRequired:
+            print("asdf: main tab bar is required")
+            return coordinateToMainTabbar()
         default: return .none
         }
     }
 }
 
 extension AppFlow {
-    private func coordinateToInduceboard() -> RxFlow.FlowContributors {
-        let induceFlow = InduceFlow()
-        Flows.use(induceFlow, when: .created) { [weak self] flowRoot in
+    private func coordinateToMainTabbar() -> FlowContributors {
+        let mainFlow = MainFlow()
+
+        Flows.use(mainFlow, when: .created) { [weak self] flowRoot in
             guard let self = self else { return }
             self.rootWindow.rootViewController = flowRoot
         }
-        let nextStep = OneStepper(withSingleStep: AppStep.induceboardIsRequired)
-        
-        return .one(flowContributor: .contribute(withNextPresentable: induceFlow,
+        let nextStep = OneStepper(withSingleStep: AppStep.mainTabbarIsRequired)
+
+        return .one(flowContributor: .contribute(withNextPresentable: mainFlow,
                                                  withNextStepper: nextStep))
     }
 }

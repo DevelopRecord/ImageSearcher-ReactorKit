@@ -10,6 +10,18 @@
 		3FDF5390B8F5783ABA9829C8 /* Pods_ImageSearcher_ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B141BB95A8D4E99E3624A7FC /* Pods_ImageSearcher_ReactorKit.framework */; };
 		C3001D952959619900979875 /* ImageSearcher_ReactorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001D942959619900979875 /* ImageSearcher_ReactorKitTests.swift */; };
 		C3001D9C2959954700979875 /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001D9B2959954700979875 /* DetailFlow.swift */; };
+		C3001DA1295D2B3000979875 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DA0295D2B3000979875 /* HomeViewController.swift */; };
+		C3001DA3295D2B3A00979875 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DA2295D2B3A00979875 /* HomeViewReactor.swift */; };
+		C3001DA5295D2B3F00979875 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DA4295D2B3F00979875 /* HomeView.swift */; };
+		C3001DA7295D2B9600979875 /* SettingViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DA6295D2B9600979875 /* SettingViewReactor.swift */; };
+		C3001DA9295D2B9E00979875 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DA8295D2B9E00979875 /* SettingViewController.swift */; };
+		C3001DAB295D2BA400979875 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DAA295D2BA400979875 /* SettingView.swift */; };
+		C3001DB0295D32B000979875 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DAF295D32B000979875 /* HomeFlow.swift */; };
+		C3001DB2295D32B500979875 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB1295D32B500979875 /* SettingFlow.swift */; };
+		C3001DB4295D4CB500979875 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB3295D4CB500979875 /* MainFlow.swift */; };
+		C3001DB6295D589600979875 /* HomeStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB5295D589600979875 /* HomeStepper.swift */; };
+		C3001DB9295D73F600979875 /* HomeDepthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB8295D73F600979875 /* HomeDepthViewController.swift */; };
+		C3001DBB295D75C300979875 /* HomeDepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DBA295D75C300979875 /* HomeDepthView.swift */; };
 		C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0429498F0400E35C6F /* AppDelegate.swift */; };
 		C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0629498F0400E35C6F /* SceneDelegate.swift */; };
 		C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0D29498F0600E35C6F /* Assets.xcassets */; };
@@ -34,6 +46,8 @@
 		C34E7826295298070008CD63 /* InduceViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34E7825295298070008CD63 /* InduceViewReactor.swift */; };
 		C34E78292952D2630008CD63 /* RelatedQueryFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34E78282952D2630008CD63 /* RelatedQueryFlow.swift */; };
 		C34E782D295420D90008CD63 /* ItemFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34E782C295420D90008CD63 /* ItemFlow.swift */; };
+		C35B4CCF29629E3E00786AAE /* SettingDepthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B4CCE29629E3E00786AAE /* SettingDepthViewController.swift */; };
+		C35B4CD129629E4800786AAE /* SettingDepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B4CD029629E4800786AAE /* SettingDepthView.swift */; };
 		C3BEAAA12950466C00C351F2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA02950466C00C351F2 /* DetailViewController.swift */; };
 		C3BEAAA32950467700C351F2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA22950467700C351F2 /* DetailView.swift */; };
 		C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEAAA42950467F00C351F2 /* DetailViewReactor.swift */; };
@@ -54,6 +68,18 @@
 		C3001D922959619900979875 /* ImageSearcher-ReactorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImageSearcher-ReactorKitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3001D942959619900979875 /* ImageSearcher_ReactorKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearcher_ReactorKitTests.swift; sourceTree = "<group>"; };
 		C3001D9B2959954700979875 /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
+		C3001DA0295D2B3000979875 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C3001DA2295D2B3A00979875 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
+		C3001DA4295D2B3F00979875 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C3001DA6295D2B9600979875 /* SettingViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewReactor.swift; sourceTree = "<group>"; };
+		C3001DA8295D2B9E00979875 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C3001DAA295D2BA400979875 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		C3001DAF295D32B000979875 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		C3001DB1295D32B500979875 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
+		C3001DB3295D4CB500979875 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		C3001DB5295D589600979875 /* HomeStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStepper.swift; sourceTree = "<group>"; };
+		C3001DB8295D73F600979875 /* HomeDepthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDepthViewController.swift; sourceTree = "<group>"; };
+		C3001DBA295D75C300979875 /* HomeDepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDepthView.swift; sourceTree = "<group>"; };
 		C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageSearcher-ReactorKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B4B0429498F0400E35C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C33B4B0629498F0400E35C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +106,8 @@
 		C34E7825295298070008CD63 /* InduceViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InduceViewReactor.swift; sourceTree = "<group>"; };
 		C34E78282952D2630008CD63 /* RelatedQueryFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedQueryFlow.swift; sourceTree = "<group>"; };
 		C34E782C295420D90008CD63 /* ItemFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFlow.swift; sourceTree = "<group>"; };
+		C35B4CCE29629E3E00786AAE /* SettingDepthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepthViewController.swift; sourceTree = "<group>"; };
+		C35B4CD029629E4800786AAE /* SettingDepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepthView.swift; sourceTree = "<group>"; };
 		C3BEAAA02950466C00C351F2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C3BEAAA22950467700C351F2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C3BEAAA42950467F00C351F2 /* DetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactor.swift; sourceTree = "<group>"; };
@@ -131,6 +159,91 @@
 			path = "ImageSearcher-ReactorKitTests";
 			sourceTree = "<group>";
 		};
+		C3001D9D295D2AE800979875 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C33B4B3E294B10AA00E35C6F /* Detail */,
+				C33B4B202949917100E35C6F /* Item */,
+				C33B4B1F2949916F00E35C6F /* Induce */,
+				C33B4B1E2949916E00E35C6F /* RelatedQuery */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C3001D9E295D2AF000979875 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DA6295D2B9600979875 /* SettingViewReactor.swift */,
+				C3001DA8295D2B9E00979875 /* SettingViewController.swift */,
+				C3001DAA295D2BA400979875 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C3001D9F295D2B0600979875 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DA2295D2B3A00979875 /* HomeViewReactor.swift */,
+				C3001DA0295D2B3000979875 /* HomeViewController.swift */,
+				C3001DA4295D2B3F00979875 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C3001DAC295D328F00979875 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DB1295D32B500979875 /* SettingFlow.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C3001DAD295D329300979875 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C34E782B295420CE0008CD63 /* Detail */,
+				C34E782A295420C20008CD63 /* Item */,
+				C34E78272952D2450008CD63 /* RelatedQuery */,
+				C34E7822295295220008CD63 /* Induce */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C3001DAE295D329500979875 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DAF295D32B000979875 /* HomeFlow.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C3001DB7295D73D200979875 /* DepthView */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DBD295D77AA00979875 /* Setting */,
+				C3001DBC295D75D400979875 /* Home */,
+			);
+			path = DepthView;
+			sourceTree = "<group>";
+		};
+		C3001DBC295D75D400979875 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C3001DB8295D73F600979875 /* HomeDepthViewController.swift */,
+				C3001DBA295D75C300979875 /* HomeDepthView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C3001DBD295D77AA00979875 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C35B4CCE29629E3E00786AAE /* SettingDepthViewController.swift */,
+				C35B4CD029629E4800786AAE /* SettingDepthView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		C33B4AF829498F0400E35C6F = {
 			isa = PBXGroup;
 			children = (
@@ -179,10 +292,10 @@
 		C33B4B19294990CC00E35C6F /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				C33B4B3E294B10AA00E35C6F /* Detail */,
-				C33B4B202949917100E35C6F /* Item */,
-				C33B4B1F2949916F00E35C6F /* Induce */,
-				C33B4B1E2949916E00E35C6F /* RelatedQuery */,
+				C3001D9F295D2B0600979875 /* Home */,
+				C3001D9D295D2AE800979875 /* Search */,
+				C3001D9E295D2AF000979875 /* Setting */,
+				C3001DB7295D73D200979875 /* DepthView */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -299,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				C34E781E2951B8560008CD63 /* AppFlow.swift */,
+				C3001DB3295D4CB500979875 /* MainFlow.swift */,
 				C34E7820295294FD0008CD63 /* Flows */,
 			);
 			path = Flow;
@@ -308,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				C34E781C2951B78F0008CD63 /* AppStepper.swift */,
+				C3001DB5295D589600979875 /* HomeStepper.swift */,
 			);
 			path = Stepper;
 			sourceTree = "<group>";
@@ -315,10 +430,9 @@
 		C34E7820295294FD0008CD63 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				C34E782B295420CE0008CD63 /* Detail */,
-				C34E782A295420C20008CD63 /* Item */,
-				C34E78272952D2450008CD63 /* RelatedQuery */,
-				C34E7822295295220008CD63 /* Induce */,
+				C3001DAE295D329500979875 /* Home */,
+				C3001DAD295D329300979875 /* Search */,
+				C3001DAC295D328F00979875 /* Setting */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -511,7 +625,11 @@
 				C33B4B31294AAC1700E35C6F /* Extension+.swift in Sources */,
 				C3BEAAA32950467700C351F2 /* DetailView.swift in Sources */,
 				C34E7826295298070008CD63 /* InduceViewReactor.swift in Sources */,
+				C3001DB6295D589600979875 /* HomeStepper.swift in Sources */,
+				C3001DB2295D32B500979875 /* SettingFlow.swift in Sources */,
 				C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */,
+				C35B4CD129629E4800786AAE /* SettingDepthView.swift in Sources */,
+				C3001DAB295D2BA400979875 /* SettingView.swift in Sources */,
 				C33B4B33294AAC3700E35C6F /* RelatedQueryViewController.swift in Sources */,
 				C34E7824295295320008CD63 /* InduceFlow.swift in Sources */,
 				C33C2CE92951B39D004634F3 /* AppStep.swift in Sources */,
@@ -519,20 +637,30 @@
 				C33B4B2E294AABD800E35C6F /* InduceViewController.swift in Sources */,
 				C34E781F2951B8560008CD63 /* AppFlow.swift in Sources */,
 				C34E781D2951B78F0008CD63 /* AppStepper.swift in Sources */,
+				C3001DA5295D2B3F00979875 /* HomeView.swift in Sources */,
 				C33B4B2C294AAB9100E35C6F /* InduceView.swift in Sources */,
+				C3001DBB295D75C300979875 /* HomeDepthView.swift in Sources */,
 				C33B4B2A29499B4B00E35C6F /* Giphy.swift in Sources */,
+				C3001DA1295D2B3000979875 /* HomeViewController.swift in Sources */,
 				C3BEAAA12950466C00C351F2 /* DetailViewController.swift in Sources */,
 				C33B4B242949942500E35C6F /* ItemView.swift in Sources */,
+				C35B4CCF29629E3E00786AAE /* SettingDepthViewController.swift in Sources */,
 				C3001D9C2959954700979875 /* DetailFlow.swift in Sources */,
 				C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */,
+				C3001DA7295D2B9600979875 /* SettingViewReactor.swift in Sources */,
+				C3001DB4295D4CB500979875 /* MainFlow.swift in Sources */,
 				C33B4B3A294AB0BA00E35C6F /* RelatedQueryReactor.swift in Sources */,
+				C3001DA3295D2B3A00979875 /* HomeViewReactor.swift in Sources */,
 				C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */,
 				C33B4B28294999DA00E35C6F /* APIService.swift in Sources */,
 				C33B4B222949938C00E35C6F /* ItemViewReactor.swift in Sources */,
+				C3001DA9295D2B9E00979875 /* SettingViewController.swift in Sources */,
+				C3001DB0295D32B000979875 /* HomeFlow.swift in Sources */,
 				C34E782D295420D90008CD63 /* ItemFlow.swift in Sources */,
 				C33B4B35294AAC8E00E35C6F /* RelatedQueryView.swift in Sources */,
 				C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */,
 				C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */,
+				C3001DB9295D73F600979875 /* HomeDepthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

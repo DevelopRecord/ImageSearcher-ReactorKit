@@ -14,6 +14,7 @@ class InduceViewReactor: Reactor, Stepper {
     
     enum Action {
         case searchBarButtonTapped
+        case viewAppear
     }
     
     enum Mutate {
@@ -32,7 +33,9 @@ extension InduceViewReactor {
         switch action {
         case .searchBarButtonTapped:
             steps.accept(AppStep.relatedQueryViewIsRequired)
-            
+            return .empty()
+        case .viewAppear:
+            steps.accept(AppStep.back)
             return .empty()
         }
     }

@@ -13,6 +13,6 @@ struct AppStepper: Stepper {
     
     // 최초 앱이 실행되고 나서 보여줘야 할 스텝 정의
     var initialStep: Step {
-        return AppStep.induceboardIsRequired
+        return AppStep.mainTabbarIsRequired
     }
 }

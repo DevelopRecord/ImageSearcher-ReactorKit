@@ -35,9 +35,12 @@ extension DetailViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .urlButtonClicked(let urlString):
-            steps.accept(AppStep.safariUrlButtonIsClicked(urlString))
-//            print("url Button Clicked: \(urlString)")
+            dismissAndmoveToNextPresent(step: [.dismiss, .safariUrlButtonIsClicked(urlString)])
             return .empty()
         }
+    }
+    
+    private func dismissAndmoveToNextPresent(step: [AppStep]) {
+        step.forEach { steps.accept($0) }
     }
 }
