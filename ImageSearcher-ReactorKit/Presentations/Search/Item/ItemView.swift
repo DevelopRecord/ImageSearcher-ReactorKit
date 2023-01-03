@@ -17,8 +17,10 @@ class ItemView: UIView {
     
     lazy var itemCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .clear
-        $0.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.identifier)
         $0.refreshControl = refreshControl
+        $0.rx.setDelegate(self).disposed(by: disposeBag)
+        $0.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.identifier)
+        
     }
     
     override init(frame: CGRect) {
@@ -52,14 +54,12 @@ class ItemView: UIView {
         
         itemCollectionView.rx.modelSelected(Giphy.self)
             .throttle(.milliseconds(250), latest: false, scheduler: MainScheduler.instance)
-            .map { ItemViewReactor.Action.selectedType(.modelSelected($0)) }
+            .map { ItemViewReactor.Action.modelSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
     private func bindState(reactor: ItemViewReactor) {
-        itemCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        
         reactor.state
             .compactMap { $0.gifs }
             .bind(to: itemCollectionView.rx.items(cellIdentifier: ItemCell.identifier, cellType: ItemCell.self)) { index, giphy, cell in

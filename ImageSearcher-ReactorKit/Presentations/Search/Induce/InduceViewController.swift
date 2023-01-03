@@ -23,7 +23,6 @@ class InduceViewController: UIViewController {
     
     init(reactor: InduceViewReactor) {
         super.init(nibName: nil, bundle: nil)
-        
         self.reactor = reactor
     }
     

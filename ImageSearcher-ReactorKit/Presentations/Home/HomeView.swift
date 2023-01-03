@@ -42,7 +42,6 @@ class HomeView: UIView {
     
     func bind(reactor: HomeViewReactor) {
         bindAction(reactor: reactor)
-        bindState(reactor: reactor)
     }
     
     private func bindAction(reactor: HomeViewReactor) {
@@ -50,9 +49,5 @@ class HomeView: UIView {
             .map { HomeViewReactor.Action.homePushClicked }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindState(reactor: HomeViewReactor) {
-        
     }
 }

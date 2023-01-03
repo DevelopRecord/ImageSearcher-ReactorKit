@@ -48,20 +48,4 @@ extension RelatedQueryViewController: ReactorKit.View {
         subView.bind(reactor: reactor)
     }
     
-//    private func bindAction(reactor: RelatedQueryReactor) {
-//        reactor.outputTrigger.withUnretained(self).bind(onNext: {
-//            switch $0.1 {
-//            case .modelSelected(let giphy):
-//                let controller = ItemViewController()
-//                controller.reactor = ItemViewReactor(wroteQuery: giphy.title)
-//                $0.0.navigationController?.pushViewController(controller, animated: true)
-//            case .searchButtonClicked(let selectedTitle):
-//                let controller = ItemViewController()
-//                controller.reactor = ItemViewReactor(wroteQuery: selectedTitle)
-//                $0.0.navigationController?.pushViewController(controller, animated: true)
-//            }
-//        }).disposed(by: disposeBag)
-//
-//    }
-    
 }

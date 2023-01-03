@@ -20,6 +20,13 @@ class HomeDepthView: UIView {
         $0.titleLabel?.font = .boldSystemFont(ofSize: 20)
     }
     
+    lazy var toSettingButton = UIButton(type: .system).then {
+        $0.setTitle("설정화면으로", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        $0.backgroundColor = .lightGray
+    }
+    
     // MARK: - Initializing
     
     override init(frame: CGRect) {
@@ -32,10 +39,17 @@ class HomeDepthView: UIView {
     }
     
     private func setupLayout() {
-        addSubview(popViewButton)
+        [popViewButton, toSettingButton].forEach { addSubview($0) }
+        
         popViewButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.height.equalTo(50)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        toSettingButton.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.top.equalTo(popViewButton.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(30)
         }
     }
@@ -44,7 +58,6 @@ class HomeDepthView: UIView {
 extension HomeDepthView {
     func bind(reactor: HomeViewReactor) {
         bindAction(reactor: reactor)
-        bindState(reactor: reactor)
     }
     
     private func bindAction(reactor: HomeViewReactor) {
@@ -52,9 +65,10 @@ extension HomeDepthView {
             .map { HomeViewReactor.Action.popViewButtonClicked }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindState(reactor: HomeViewReactor) {
         
+        toSettingButton.rx.tap
+            .map { HomeViewReactor.Action.toSettingButtonClicked }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }

@@ -15,13 +15,12 @@ class RelatedQueryView: UIView {
     lazy var relatedQueryTableView = UITableView().then {
         $0.backgroundColor = .clear
         $0.rowHeight = 40
-        $0.delegate = self
-        $0.dataSource = self
         $0.register(RelatedQueryCell.self, forCellReuseIdentifier: RelatedQueryCell.identifier)
     }
     
     lazy var searchBar = UISearchBar().then {
         $0.placeholder = "검색어 입력"
+        $0.setupKeyboardToolbar()
     }
     
     lazy var emptyView = UIView().then {
@@ -84,10 +83,6 @@ extension RelatedQueryView {
     }
     
     private func bindState(reactor: RelatedQueryReactor) {
-        relatedQueryTableView.delegate = nil
-        relatedQueryTableView.dataSource = nil
-        relatedQueryTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        
         reactor.state
             .compactMap { $0.gifs }
             .do(onNext: { [weak self] in
@@ -97,16 +92,5 @@ extension RelatedQueryView {
             .bind(to: relatedQueryTableView.rx.items(cellIdentifier: RelatedQueryCell.identifier, cellType: RelatedQueryCell.self)) { _, gifs, cell in
                 cell.setupRequest(with: gifs)
             }.disposed(by: disposeBag)
-    }
-}
-
-extension RelatedQueryView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RelatedQueryCell.identifier, for: indexPath) as? RelatedQueryCell else { return UITableViewCell() }
-        return cell
     }
 }

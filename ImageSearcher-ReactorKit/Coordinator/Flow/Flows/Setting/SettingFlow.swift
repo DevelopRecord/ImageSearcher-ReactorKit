@@ -24,7 +24,9 @@ class SettingFlow: Flow {
         case .settingAlertIsRequired(let message):
             return coordinateToAlertView(message: message)
         case .dismiss:
-            return coordinateToDismiss()
+            rootViewController.visibleViewController?.dismiss(animated: true)
+            
+            return .none
         default: return .none
         }
     }
@@ -55,12 +57,6 @@ class SettingFlow: Flow {
         let alert = UIAlertController(title: "제목", message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "취소 !", style: .cancel))
         rootViewController.present(alert, animated: true)
-        
-        return .none
-    }
-    
-    private func coordinateToDismiss() -> FlowContributors {
-        rootViewController.visibleViewController?.dismiss(animated: true)
         
         return .none
     }

@@ -13,18 +13,17 @@ class SettingViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     enum Action {
+        // setting view action
         case modalButtonClicked
         case alertButtonClicked
+        
+        // settingDepth view action
         case dismissButtonClicked
     }
     
-    enum Mutation {
-        
-    }
+    enum Mutation { }
     
-    struct State {
-        
-    }
+    struct State { }
     
     let initialState: State = State()
 }

@@ -9,12 +9,12 @@ import ReactorKit
 import RxCocoa
 import RxFlow
 
-enum SearchType {
-    case modelSelected(Giphy)
-    case searchButtonClicked(String?)
-}
-
 class RelatedQueryReactor: Reactor, Stepper {
+    enum SearchType {
+        case modelSelected(Giphy)
+        case searchButtonClicked(String?)
+    }
+    
     var steps = PublishRelay<Step>()
     
     var disposeBag = DisposeBag()
@@ -50,11 +50,10 @@ extension RelatedQueryReactor {
         case .selectedType(let type):
             switch type {
             case .modelSelected(let giphy):
-                steps.accept(AppStep.relatedQueryIsPicked(giphy))
+                steps.accept(AppStep.relatedQueryIsPicked(giphy.title))
                 return .empty()
             case .searchButtonClicked:
                 steps.accept(AppStep.searchButtonIsClicked(searchQuery))
-                
                 return .empty()
             }
         }

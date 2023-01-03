@@ -19,29 +19,18 @@ class RelatedQueryFlow: Flow {
         guard let step = step as? AppStep else { return .none }
         
         switch step {
-        case .relatedQueryIsPicked(let giphy):
-            return coordinateToGIfItemView(giphy: giphy)
+        case .relatedQueryIsPicked(let query):
+            return coordinateToGifItemView(query: query)
         case .searchButtonIsClicked(let query):
             return coordinateToGifItemView(query: query)
         default: return .none
         }
     }
     
-    private func coordinateToGIfItemView(giphy: Giphy) -> RxFlow.FlowContributors {
-        let reactor = ItemViewReactor(wroteQuery: giphy.title)
-        let controller = ItemViewController(reactor: reactor)
-        let flow = ItemFlow()
-        
-        InduceFlow.rootViewController.pushViewController(controller, animated: true)
-        
-        return .one(flowContributor: .contribute(withNextPresentable: flow,
-                                                 withNextStepper: reactor))
-    }
-    
     private func coordinateToGifItemView(query: String?) -> RxFlow.FlowContributors {
         let reactor = ItemViewReactor(wroteQuery: query)
-        let flow = ItemFlow()
         let controller = ItemViewController(reactor: reactor)
+        let flow = ItemFlow()
         
         InduceFlow.rootViewController.pushViewController(controller, animated: true)
         

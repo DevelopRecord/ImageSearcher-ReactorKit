@@ -44,7 +44,6 @@ class SettingDepthView: UIView {
 extension SettingDepthView {
     func bind(reactor: SettingViewReactor) {
         bindAction(reactor: reactor)
-        bindState(reactor: reactor)
     }
     
     private func bindAction(reactor: SettingViewReactor) {
@@ -53,7 +52,5 @@ extension SettingDepthView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
-    
-    private func bindState(reactor: SettingViewReactor) { }
 }
 

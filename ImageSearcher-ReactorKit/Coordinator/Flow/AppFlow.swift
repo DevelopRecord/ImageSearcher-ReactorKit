@@ -25,7 +25,6 @@ final class AppFlow: RxFlow.Flow {
         
         switch step {
         case .mainTabbarIsRequired:
-            print("asdf: main tab bar is required")
             return coordinateToMainTabbar()
         default: return .none
         }

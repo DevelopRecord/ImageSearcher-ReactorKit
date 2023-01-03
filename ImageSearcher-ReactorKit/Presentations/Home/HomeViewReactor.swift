@@ -14,17 +14,17 @@ class HomeViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     enum Action {
+        // homeView action
         case homePushClicked
+        
+        // homeDepthView action
         case popViewButtonClicked
+        case toSettingButtonClicked
     }
     
-    enum Mutation {
-        
-    }
+    enum Mutation { }
     
-    struct State {
-        
-    }
+    struct State { }
     
     let initialState: State = State()
 }
@@ -37,6 +37,9 @@ extension HomeViewReactor {
             return .empty()
         case .popViewButtonClicked:
             steps.accept(AppStep.back)
+            return .empty()
+        case .toSettingButtonClicked:
+            steps.accept(AppStep.toSettingIsRequiredAgain)
             return .empty()
         }
     }

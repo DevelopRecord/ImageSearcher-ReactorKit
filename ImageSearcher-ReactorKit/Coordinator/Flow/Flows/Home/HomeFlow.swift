@@ -22,8 +22,11 @@ class HomeFlow: Flow {
             return coordinateToHome()
         case .homeDepthIsRequired:
             return coordinateToHomeDepth()
+        case .toSettingIsRequiredAgain:
+            return .one(flowContributor: .forwardToParentFlow(withStep: AppStep.toSettingIsRequiredAgain))
         case .back:
-            return coordinateToBack()
+            rootViewController.popViewController(animated: true)
+            return .none
         default: return .none
         }
     }
@@ -49,11 +52,5 @@ class HomeFlow: Flow {
         
         return .one(flowContributor: .contribute(withNextPresentable: controller,
                                                  withNextStepper: reactor))
-    }
-    
-    private func coordinateToBack() -> FlowContributors {
-        rootViewController.popViewController(animated: true)
-        
-        return .none
     }
 }

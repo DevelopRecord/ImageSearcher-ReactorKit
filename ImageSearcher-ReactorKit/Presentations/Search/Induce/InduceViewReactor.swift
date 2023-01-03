@@ -17,13 +17,9 @@ class InduceViewReactor: Reactor, Stepper {
         case viewAppear
     }
     
-    enum Mutate {
-        
-    }
+    enum Mutate { }
     
-    struct State {
-        
-    }
+    struct State { }
     
     let initialState: State = .init()
 }

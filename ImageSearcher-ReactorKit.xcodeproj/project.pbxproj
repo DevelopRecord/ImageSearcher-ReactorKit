@@ -162,10 +162,10 @@
 		C3001D9D295D2AE800979875 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				C33B4B3E294B10AA00E35C6F /* Detail */,
-				C33B4B202949917100E35C6F /* Item */,
 				C33B4B1F2949916F00E35C6F /* Induce */,
 				C33B4B1E2949916E00E35C6F /* RelatedQuery */,
+				C33B4B3E294B10AA00E35C6F /* Detail */,
+				C33B4B202949917100E35C6F /* Item */,
 			);
 			path = Search;
 			sourceTree = "<group>";

@@ -12,18 +12,24 @@ enum AppStep: Step {
     case mainTabbarIsRequired
     
     // Home
+    /// 홈화면 진입
     case homeIsRequired
+    
+    /// 홈화면 한 단계 진입
     case homeDepthIsRequired
     
+    /// 세팅화면 이동
+    case toSettingIsRequiredAgain
+    
     // Search
-    /// 최초화면 요구
+    /// 검색유도 화면 진입
     case induceboardIsRequired
     
     /// 네비게이션 바 검색 버튼 탭
     case relatedQueryViewIsRequired
     
     /// 연관검색어 선택
-    case relatedQueryIsPicked(Giphy)
+    case relatedQueryIsPicked(String?)
     
     /// 키보드 검색 버튼 클릭
     case searchButtonIsClicked(String?)
@@ -34,15 +40,17 @@ enum AppStep: Step {
     /// 사파리 이동 버튼 클릭
     case safariUrlButtonIsClicked(String?)
     
-    case dismiss
-    
-    case back
-    
     // Setting
     /// 설정화면 진입
     case settingIsRequired
+    
     /// 설정화면 한 단계 진입
     case settingDepthIsRequired
+    
     /// 설정화면 알림 버튼
     case settingAlertIsRequired(message: String)
+    
+    // ETC
+    case dismiss
+    case back
 }

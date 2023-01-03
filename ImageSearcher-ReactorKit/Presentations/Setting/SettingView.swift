@@ -58,7 +58,6 @@ class SettingView: UIView {
     
     func bind(reactor: SettingViewReactor) {
         bindAction(reactor: reactor)
-        bindState(reactor: reactor)
     }
     
     private func bindAction(reactor: SettingViewReactor) {
@@ -71,9 +70,5 @@ class SettingView: UIView {
             .map { SettingViewReactor.Action.alertButtonClicked }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindState(reactor: SettingViewReactor) {
-        
     }
 }
