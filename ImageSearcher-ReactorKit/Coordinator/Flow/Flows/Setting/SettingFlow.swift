@@ -25,7 +25,6 @@ class SettingFlow: Flow {
             return coordinateToAlertView(message: message)
         case .dismiss:
             rootViewController.visibleViewController?.dismiss(animated: true)
-            
             return .none
         default: return .none
         }

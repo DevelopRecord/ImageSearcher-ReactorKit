@@ -59,6 +59,6 @@ extension MainFlow {
         rootViewController.selectedIndex = TabbarIndex.setting.rawValue // 설정화면 탭바 인덱스 번호
         
         return .one(flowContributor: .contribute(withNextPresentable: settingFlow,
-                                                 withNextStepper: OneStepper(withSingleStep: AppStep.toSettingIsRequiredAgain)))
+                                                 withNextStepper: SettingViewReactor()))
     }
 }

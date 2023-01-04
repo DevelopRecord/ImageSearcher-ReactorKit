@@ -17,7 +17,7 @@ class RelatedQueryFlow: Flow {
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
-        
+        // 여기 플로우 해제된건지 확인
         switch step {
         case .relatedQueryIsPicked(let query):
             return coordinateToGifItemView(query: query)

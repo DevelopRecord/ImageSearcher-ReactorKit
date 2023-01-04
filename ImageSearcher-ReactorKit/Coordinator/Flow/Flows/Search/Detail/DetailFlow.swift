@@ -21,7 +21,8 @@ class DetailFlow: Flow {
         case .safariUrlButtonIsClicked(let urlString):
             return coordinateToSafariView(with: urlString)
         case .dismiss:
-            return dismissView()
+            InduceFlow.rootViewController.dismiss(animated: true)
+            return .none
         default: return .none
         }
     }
@@ -31,11 +32,6 @@ class DetailFlow: Flow {
         let safariViewController = SFSafariViewController(url: url)
         InduceFlow.rootViewController.present(safariViewController, animated: true)
         
-        return .none
-    }
-    
-    private func dismissView() -> FlowContributors {
-        InduceFlow.rootViewController.dismiss(animated: true)
         return .none
     }
 }

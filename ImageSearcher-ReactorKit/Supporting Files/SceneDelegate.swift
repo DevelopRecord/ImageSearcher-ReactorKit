@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxFlow
-// 1번 파람 값 굳이 설명 필요없음
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var disposeBag = DisposeBag()

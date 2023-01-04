@@ -19,7 +19,7 @@ class RelatedQueryReactor: Reactor, Stepper {
     
     var disposeBag = DisposeBag()
     
-    var searchQuery = ""
+    var searchQuery = "" // currentState.
     
     enum Action {
         case searchQuery(String)
@@ -28,6 +28,7 @@ class RelatedQueryReactor: Reactor, Stepper {
     
     enum Mutation {
         case gifs([Giphy])
+//        case searchQuery
     }
     
     struct State {
