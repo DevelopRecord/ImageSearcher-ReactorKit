@@ -10,30 +10,24 @@ import RxCocoa
 import RxFlow
 
 class RelatedQueryReactor: Reactor, Stepper {
-    enum SearchType {
-        case modelSelected(Giphy)
-        case searchButtonClicked(String?)
-    }
-    
     var steps = PublishRelay<Step>()
     
     var disposeBag = DisposeBag()
     
-    var searchQuery = "" // currentState.
-    
     enum Action {
         case searchQuery(String)
-        case selectedType(SearchType)
+        case modelSelected(Giphy)
+        case searchButtonClicked(String?)
     }
     
     enum Mutation {
         case gifs([Giphy])
-//        case searchQuery
+        case searchQuery(String)
     }
     
     struct State {
         var gifs: [Giphy] = []
-        var title: String?
+        var searchQuery: String?
     }
     
     let initialState: State = State()
@@ -43,20 +37,15 @@ extension RelatedQueryReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .searchQuery(let searchQuery):
-            self.searchQuery = searchQuery
             return fetchGiphy(of: searchQuery).flatMap { giphy -> Observable<Mutation> in
-                return .just(.gifs(giphy))
+                return .of(.gifs(giphy), .searchQuery(searchQuery))
             }
-
-        case .selectedType(let type):
-            switch type {
-            case .modelSelected(let giphy):
-                steps.accept(AppStep.relatedQueryIsPicked(giphy.title))
-                return .empty()
-            case .searchButtonClicked:
-                steps.accept(AppStep.searchButtonIsClicked(searchQuery))
-                return .empty()
-            }
+        case .modelSelected(let giphy):
+            steps.accept(AppStep.relatedQueryIsPicked(giphy.title))
+            return .empty()
+        case .searchButtonClicked:
+            steps.accept(AppStep.searchButtonIsClicked(currentState.searchQuery))
+            return .empty()
         }
     }
     
@@ -66,6 +55,8 @@ extension RelatedQueryReactor {
         switch mutation {
         case .gifs(let giphy):
             newState.gifs = giphy
+        case .searchQuery(let query):
+            newState.searchQuery = query
         }
         
         return newState

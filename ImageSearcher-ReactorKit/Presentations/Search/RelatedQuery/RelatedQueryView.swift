@@ -72,12 +72,12 @@ extension RelatedQueryView {
             .disposed(by: disposeBag)
         
         searchBar.rx.searchButtonClicked
-            .map { RelatedQueryReactor.Action.selectedType(.searchButtonClicked(nil)) }
+            .map { RelatedQueryReactor.Action.searchButtonClicked(nil) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         relatedQueryTableView.rx.modelSelected(Giphy.self)
-            .map { RelatedQueryReactor.Action.selectedType(.modelSelected($0)) }
+            .map { RelatedQueryReactor.Action.modelSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
