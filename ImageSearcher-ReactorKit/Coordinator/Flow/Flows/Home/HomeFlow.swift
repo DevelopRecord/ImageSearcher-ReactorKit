@@ -14,6 +14,10 @@ class HomeFlow: Flow {
     
     let rootViewController = UINavigationController(rootViewController: HomeViewController(reactor: HomeViewReactor()))
     
+    deinit {
+        print("HomeFlow Deinit: \(type(of: self)): \(#function)")
+    }
+    
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
         

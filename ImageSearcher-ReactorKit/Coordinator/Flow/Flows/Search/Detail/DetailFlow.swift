@@ -13,7 +13,15 @@ class DetailFlow: Flow {
         return self.rootViewController
     }
     
-    private let rootViewController = UINavigationController()
+    init(rootViewController: UINavigationController) {
+        self.rootViewController = rootViewController
+    }
+    
+    private var rootViewController = UINavigationController()
+    
+    deinit {
+        print("DetailFlow Deinit: \(type(of: self)): \(#function)")
+    }
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
@@ -21,7 +29,7 @@ class DetailFlow: Flow {
         case .safariUrlButtonIsClicked(let urlString):
             return coordinateToSafariView(with: urlString)
         case .dismiss:
-            InduceFlow.rootViewController.dismiss(animated: true)
+            rootViewController.dismiss(animated: true)
             return .none
         default: return .none
         }
@@ -30,7 +38,7 @@ class DetailFlow: Flow {
     private func coordinateToSafariView(with urlString: String?) -> RxFlow.FlowContributors {
         guard let urlString = urlString, let url = URL(string: urlString) else { return .none }
         let safariViewController = SFSafariViewController(url: url)
-        InduceFlow.rootViewController.present(safariViewController, animated: true)
+        rootViewController.present(safariViewController, animated: true)
         
         return .none
     }

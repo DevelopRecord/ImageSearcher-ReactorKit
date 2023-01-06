@@ -12,7 +12,15 @@ class ItemFlow: Flow {
         return self.rootViewController
     }
     
-    let rootViewController = UINavigationController()
+    init(rootViewController: UINavigationController) {
+        self.rootViewController = rootViewController
+    }
+    
+    var rootViewController = UINavigationController()
+    
+    deinit {
+        print("ItemFlow Deinit: \(type(of: self)): \(#function)")
+    }
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
@@ -26,7 +34,7 @@ class ItemFlow: Flow {
     
     private func coordinateToDetailView(of giphy: Giphy) -> RxFlow.FlowContributors {
         let reactor = DetailViewReactor(giphy: giphy)
-        let flow = DetailFlow()
+        let flow = DetailFlow(rootViewController: rootViewController)
         let controller = DetailViewController(reactor: reactor)
         controller.modalPresentationStyle = .pageSheet
         
@@ -36,7 +44,7 @@ class ItemFlow: Flow {
             //시트 상단에 그래버 표시 (기본 값은 false)
             sheet.prefersGrabberVisible = true
         }
-        InduceFlow.rootViewController.present(controller, animated: true)
+        rootViewController.present(controller, animated: true)
         
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))

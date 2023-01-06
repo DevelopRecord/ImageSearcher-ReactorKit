@@ -14,6 +14,10 @@ class SettingFlow: Flow {
     
     private let rootViewController = UINavigationController()
     
+    deinit {
+        print("SettingFlow Deinit: \(type(of: self)): \(#function)")
+    }
+    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {

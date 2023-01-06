@@ -13,7 +13,15 @@ class RelatedQueryFlow: Flow {
         return self.rootViewController
     }
     
-    let rootViewController = UINavigationController()
+    init(rootViewController: UINavigationController) {
+        self.rootViewController = rootViewController
+    }
+    
+    var rootViewController = UINavigationController()
+    
+    deinit {
+        print("RelatedQueryFlow Deinit: \(type(of: self)): \(#function)")
+    }
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
         guard let step = step as? AppStep else { return .none }
@@ -30,9 +38,9 @@ class RelatedQueryFlow: Flow {
     private func coordinateToGifItemView(query: String?) -> RxFlow.FlowContributors {
         let reactor = ItemViewReactor(wroteQuery: query)
         let controller = ItemViewController(reactor: reactor)
-        let flow = ItemFlow()
+        let flow = ItemFlow(rootViewController: rootViewController)
         
-        InduceFlow.rootViewController.pushViewController(controller, animated: true)
+        rootViewController.pushViewController(controller, animated: true)
         
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))

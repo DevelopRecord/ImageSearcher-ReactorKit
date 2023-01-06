@@ -9,13 +9,13 @@ import RxFlow
 
 class InduceFlow: Flow {
     var root: RxFlow.Presentable {
-        return InduceFlow.rootViewController
+        return rootViewController
     }
     
-    static let rootViewController = UINavigationController()
+    let rootViewController = UINavigationController()
     
     deinit {
-        print("\(type(of: self)): \(#function)")
+        print("InduceFlow Deinit: \(type(of: self)): \(#function)")
     }
     
     func navigate(to step: RxFlow.Step) -> RxFlow.FlowContributors {
@@ -37,29 +37,30 @@ class InduceFlow: Flow {
         let flow = InduceFlow()
         let controller = InduceViewController(reactor: reactor)
         
-        InduceFlow.rootViewController.tabBarItem.title = "검색"
-        InduceFlow.rootViewController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
-        InduceFlow.rootViewController.setViewControllers([controller], animated: true)
-        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = false
+        rootViewController.tabBarItem.title = "검색"
+        rootViewController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        rootViewController.setViewControllers([controller], animated: true)
+        rootViewController.tabBarController?.tabBar.isHidden = false
         
-        return .one(flowContributor: .contribute(withNextPresentable: flow,
+        return .one(flowContributor: .contribute(withNextPresentable: self.root,
                                                  withNextStepper: reactor))
     }
     
     private func coordinateToRelatedQueryView() -> FlowContributors {
         let reactor = RelatedQueryReactor()
-        let flow = RelatedQueryFlow()
+        let flow = RelatedQueryFlow(rootViewController: rootViewController)
         let controller = RelatedQueryViewController(reactor: reactor)
-        InduceFlow.rootViewController.pushViewController(controller, animated: true)
-        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = true
+        
+        rootViewController.pushViewController(controller, animated: true)
+        rootViewController.tabBarController?.tabBar.isHidden = true
         // Flows.use
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: reactor))
     }
     
     private func coordinateToBack() -> FlowContributors {
-        InduceFlow.rootViewController.popViewController(animated: true)
-        InduceFlow.rootViewController.tabBarController?.tabBar.isHidden = false
+        rootViewController.popViewController(animated: true)
+        rootViewController.tabBarController?.tabBar.isHidden = false
         
         return .none
     }
