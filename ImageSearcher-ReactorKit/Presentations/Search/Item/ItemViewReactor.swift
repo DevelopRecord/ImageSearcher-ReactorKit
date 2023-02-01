@@ -39,7 +39,7 @@ class ItemViewReactor: Reactor, Stepper {
 extension ItemViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .refreshControl:
+        case .refreshControl, .viewLoaded:
             return fetchGiphy(of: wroteQuery).flatMap { giphy -> Observable<Mutation> in
                 return .just(.gifs(giphy))
             }

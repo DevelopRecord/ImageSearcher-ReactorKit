@@ -27,12 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         self.window = window
         
-//        let appFlow = AppFlow(with: window)
-        let appFlow = MainFlow()
+        let mainFlow = MainFlow()
         let appStepper = AppStepper()
         
-        coordinator.coordinate(flow: appFlow, with: appStepper)
-        Flows.use(appFlow, when: .created) { [weak self] flowRoot in
+        coordinator.coordinate(flow: mainFlow, with: appStepper)
+        Flows.use(mainFlow, when: .created) { [weak self] flowRoot in
             guard let self = self else { return }
             self.window?.rootViewController = flowRoot
         }

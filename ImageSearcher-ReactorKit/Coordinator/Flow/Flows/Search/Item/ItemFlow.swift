@@ -16,7 +16,7 @@ class ItemFlow: Flow {
         self.rootViewController = rootViewController
     }
     
-    var rootViewController = UINavigationController()
+    private var rootViewController = UINavigationController()
     
     deinit {
         print("ItemFlow Deinit: \(type(of: self)): \(#function)")

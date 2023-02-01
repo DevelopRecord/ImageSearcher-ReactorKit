@@ -12,7 +12,7 @@ class InduceFlow: Flow {
         return rootViewController
     }
     
-    let rootViewController = UINavigationController()
+    private let rootViewController = UINavigationController()
     
     deinit {
         print("InduceFlow Deinit: \(type(of: self)): \(#function)")

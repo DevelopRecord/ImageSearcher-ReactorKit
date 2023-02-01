@@ -17,7 +17,7 @@ class RelatedQueryFlow: Flow {
         self.rootViewController = rootViewController
     }
     
-    var rootViewController = UINavigationController()
+    private var rootViewController = UINavigationController()
     
     deinit {
         print("RelatedQueryFlow Deinit: \(type(of: self)): \(#function)")
