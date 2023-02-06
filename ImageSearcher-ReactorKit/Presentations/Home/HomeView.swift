@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 
+
 class HomeView: UIView {
     
     // MARK: - Properties
@@ -15,6 +16,20 @@ class HomeView: UIView {
     
     lazy var pushButton = UIButton(type: .system).then {
         $0.setTitle("Push Button", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        $0.backgroundColor = .lightGray
+    }
+    
+    lazy var starScreamWebSocketButton = UIButton(type: .system).then {
+        $0.setTitle("StarScream WebSocket 써보기", for: .normal)
+        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        $0.backgroundColor = .lightGray
+    }
+    
+    lazy var rxStarScreamWebSocketButton = UIButton(type: .system).then {
+        $0.setTitle("Rx StarScream WebSocket 써보기", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.titleLabel?.font = .boldSystemFont(ofSize: 20)
         $0.backgroundColor = .lightGray
@@ -32,9 +47,21 @@ class HomeView: UIView {
     
     // MARK: - Methods
     private func setupLayout() {
-        addSubview(pushButton)
+        addSubviews([pushButton, starScreamWebSocketButton, rxStarScreamWebSocketButton])
         pushButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        starScreamWebSocketButton.snp.makeConstraints {
+            $0.top.equalTo(pushButton.snp.bottom).offset(20)
+            $0.height.equalTo(50)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        rxStarScreamWebSocketButton.snp.makeConstraints {
+            $0.top.equalTo(starScreamWebSocketButton.snp.bottom).offset(20)
             $0.height.equalTo(50)
             $0.leading.trailing.equalToSuperview().inset(30)
         }
@@ -47,6 +74,16 @@ class HomeView: UIView {
     private func bindAction(reactor: HomeViewReactor) {
         pushButton.rx.tap
             .map { HomeViewReactor.Action.homePushClicked }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        starScreamWebSocketButton.rx.tap
+            .map { HomeViewReactor.Action.starScreamWebSocketClicked }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        rxStarScreamWebSocketButton.rx.tap
+            .map { HomeViewReactor.Action.rxStarScreamWebSocketClicked }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }

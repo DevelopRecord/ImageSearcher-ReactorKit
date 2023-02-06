@@ -1,0 +1,6 @@
+framework module Pods_ImageSearcher_ReactorKitTests {
+  umbrella header "Pods-ImageSearcher-ReactorKitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

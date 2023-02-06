@@ -34,7 +34,7 @@ final class AppFlow: RxFlow.Flow {
 extension AppFlow {
     private func coordinateToMainTabbar() -> FlowContributors {
         let mainFlow = MainFlow()
-
+        
         Flows.use(mainFlow, when: .created) { [weak self] flowRoot in
             guard let self = self else { return }
             self.rootWindow.rootViewController = flowRoot

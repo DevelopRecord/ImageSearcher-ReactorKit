@@ -18,6 +18,15 @@ enum AppStep: Step {
     /// 홈화면 한 단계 진입
     case homeDepthIsRequired
     
+    /// 홈화면 웹소켓(StarScream) 진입
+    case starScreamWebSocketIsRequired
+    
+    /// 홈화면 웹소켓(RxStarScream) 진입
+    case rxStarScreamWebSocketIsRequired
+    
+    /// 웹소켓 채팅 진입
+    case webSocketChatIsRequired
+    
     /// 세팅화면 이동
     case toSettingIsRequiredAgain
     

@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (5.6.2)
-  - Kingfisher (7.4.1)
+  - Alamofire (5.6.4)
+  - Kingfisher (7.5.0)
   - ReactorKit (3.2.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
@@ -14,6 +14,7 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
+  - Starscream (4.0.4)
   - Then (3.0.0)
   - WeakMapTable (1.2.0)
 
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - RxFlow
   - RxSwift
   - SnapKit
+  - Starscream
   - Then
 
 SPEC REPOS:
@@ -37,21 +39,23 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - Starscream
     - Then
     - WeakMapTable
 
 SPEC CHECKSUMS:
-  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxFlow: 52f6f6379918392c1ea8cb62d8dcf2df9a5463dd
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: cfd383cbe85f020cfccdd5989b47a30fa5fb8105
+PODFILE CHECKSUM: 0b49225b0c1b98c738443c8dc50151a719a914d6
 
 COCOAPODS: 1.11.3

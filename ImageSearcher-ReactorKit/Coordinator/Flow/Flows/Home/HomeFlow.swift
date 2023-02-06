@@ -24,6 +24,12 @@ class HomeFlow: Flow {
         switch step {
         case .homeIsRequired:
             return coordinateToHome()
+        case .starScreamWebSocketIsRequired:
+            return coordinateToWebSocket()
+        case .rxStarScreamWebSocketIsRequired:
+            return coordinateToRxWebSocket()
+        case .webSocketChatIsRequired:
+            return coordinateToWebSocketChat()
         case .homeDepthIsRequired:
             return coordinateToHomeDepth()
         case .toSettingIsRequiredAgain:
@@ -47,6 +53,26 @@ class HomeFlow: Flow {
         
         return .one(flowContributor: .contribute(withNextPresentable: self.root,
                                                  withNextStepper: reactor))
+    }
+    
+    private func coordinateToWebSocket() -> FlowContributors {
+        let reactor = HomeViewReactor()
+        let controller = WebSocketViewController(reactor: reactor)
+        controller.hidesBottomBarWhenPushed = true
+        rootViewController.pushViewController(controller, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: controller,
+                                                 withNextStepper: reactor))
+    }
+    
+    private func coordinateToRxWebSocket() -> FlowContributors {
+        let reactor = HomeViewReactor()
+        return .none
+    }
+    
+    private func coordinateToWebSocketChat() -> FlowContributors {
+        let controller = TransmitViewController()
+        rootViewController.pushViewController(controller, animated: true)
+        return .none
     }
     
     private func coordinateToHomeDepth() -> FlowContributors {

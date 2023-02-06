@@ -68,19 +68,19 @@ class ItemView: UIView {
         let pairGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3),
                                                    heightDimension: .fractionalHeight(1.0))
         let pairGroup = NSCollectionLayoutGroup.vertical(layoutSize: pairGroupSize,
-                                                         subitem: pairItem,
-                                                         count: 2)
+                                                         subitems: [pairItem])
         
         // 첫번째 큰 아이템 하나와 두번쨰 아이템의 왼쪽, 오른쪽 묶은 그룹
         let HalfWithPairGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                            heightDimension: .fractionalWidth(0.6))
         let HalfWithPairGroup = NSCollectionLayoutGroup.horizontal(layoutSize: HalfWithPairGroupSize,
-                                                               subitems: [secondHalfItem, pairGroup])
+                                                                   subitems: [secondHalfItem, pairGroup])
         
         // 세번째 너비가 같은 아이템 세개 묶은 그룹
         let tripleGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                      heightDimension: .fractionalWidth(0.2))
-        let tripleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: tripleGroupSize, subitem: tripleItem, count: 3)
+        let tripleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: tripleGroupSize,
+                                                             subitems: [tripleItem])
         
         // 네번째는 두번째의 반대니까 순서만 바꿔서 위에거 재사용
         let secondHalfReversedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -94,6 +94,9 @@ class ItemView: UIView {
         let nestedGroup = NSCollectionLayoutGroup.vertical(layoutSize: nestedGroupSize,
                                                            subitems: [topItem, HalfWithPairGroup, tripleGroup, secondHalfReversedGroup])
         let section = NSCollectionLayoutSection(group: nestedGroup)
+        section.interGroupSpacing = -30
+        
+//        section.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0)
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout

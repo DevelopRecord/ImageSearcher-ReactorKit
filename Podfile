@@ -12,6 +12,12 @@ target 'ImageSearcher-ReactorKit' do
 	pod 'RxFlow'
 	pod 'SnapKit'
 	pod 'Then'
+	pod 'Starscream'
   # Pods for ImageSearcher-ReactorKit
+
+  target 'ImageSearcher-ReactorKitTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end

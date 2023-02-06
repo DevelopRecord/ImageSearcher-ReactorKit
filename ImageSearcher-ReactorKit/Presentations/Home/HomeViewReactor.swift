@@ -17,6 +17,11 @@ class HomeViewReactor: Reactor, Stepper {
         // homeView action
         case homePushClicked
         
+        // webSocketView action
+        case starScreamWebSocketClicked
+        case rxStarScreamWebSocketClicked
+        case joinClicked(String?)
+        
         // homeDepthView action
         case popViewButtonClicked
         case toSettingButtonClicked
@@ -34,6 +39,18 @@ extension HomeViewReactor {
         switch action {
         case .homePushClicked:
             steps.accept(AppStep.homeDepthIsRequired)
+            return .empty()
+        case .starScreamWebSocketClicked:
+            steps.accept(AppStep.starScreamWebSocketIsRequired)
+            return .empty()
+        case .rxStarScreamWebSocketClicked:
+            steps.accept(AppStep.rxStarScreamWebSocketIsRequired)
+            return .empty()
+        case .joinClicked(let name):
+            if let name = name {
+                UserDefaults.standard.set(name, forKey: "name")
+                steps.accept(AppStep.webSocketChatIsRequired)
+            }
             return .empty()
         case .popViewButtonClicked:
             steps.accept(AppStep.back)
