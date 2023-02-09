@@ -22,6 +22,8 @@
 		C3001DB6295D589600979875 /* HomeStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB5295D589600979875 /* HomeStepper.swift */; };
 		C3001DB9295D73F600979875 /* HomeDepthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DB8295D73F600979875 /* HomeDepthViewController.swift */; };
 		C3001DBB295D75C300979875 /* HomeDepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DBA295D75C300979875 /* HomeDepthView.swift */; };
+		C303BA4529921801001199AF /* ConversationSentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303BA4429921801001199AF /* ConversationSentCell.swift */; };
+		C303BA472992181B001199AF /* ConversationReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303BA462992181B001199AF /* ConversationReceivedCell.swift */; };
 		C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0429498F0400E35C6F /* AppDelegate.swift */; };
 		C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0629498F0400E35C6F /* SceneDelegate.swift */; };
 		C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0D29498F0600E35C6F /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 		C3001DB5295D589600979875 /* HomeStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStepper.swift; sourceTree = "<group>"; };
 		C3001DB8295D73F600979875 /* HomeDepthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDepthViewController.swift; sourceTree = "<group>"; };
 		C3001DBA295D75C300979875 /* HomeDepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDepthView.swift; sourceTree = "<group>"; };
+		C303BA4429921801001199AF /* ConversationSentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationSentCell.swift; sourceTree = "<group>"; };
+		C303BA462992181B001199AF /* ConversationReceivedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationReceivedCell.swift; sourceTree = "<group>"; };
 		C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageSearcher-ReactorKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B4B0429498F0400E35C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C33B4B0629498F0400E35C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +161,6 @@
 				3BBCBFDE3EC3F80B6B805AEC /* Pods-ImageSearcher-ReactorKitTests.debug.xcconfig */,
 				262FD278553FCF1236C7AAA7 /* Pods-ImageSearcher-ReactorKitTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -253,6 +256,15 @@
 				C35B4CD029629E4800786AAE /* SettingDepthView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		C303BA43299217F7001199AF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C303BA4429921801001199AF /* ConversationSentCell.swift */,
+				C303BA462992181B001199AF /* ConversationReceivedCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C33B4AF829498F0400E35C6F = {
@@ -493,6 +505,7 @@
 		C391411D298B947D00EA8175 /* TransmitView */ = {
 			isa = PBXGroup;
 			children = (
+				C303BA43299217F7001199AF /* Cell */,
 				C391411B298B944B00EA8175 /* TransmitViewController.swift */,
 				C391411E298B949100EA8175 /* TransmitView.swift */,
 				C3914120298BB49B00EA8175 /* TransmitInfoView.swift */,
@@ -712,6 +725,7 @@
 				C33B4B242949942500E35C6F /* ItemView.swift in Sources */,
 				C391411A298B84EC00EA8175 /* WebSocketView.swift in Sources */,
 				C35B4CCF29629E3E00786AAE /* SettingDepthViewController.swift in Sources */,
+				C303BA4529921801001199AF /* ConversationSentCell.swift in Sources */,
 				C3001D9C2959954700979875 /* DetailFlow.swift in Sources */,
 				C33B4B38294AAD1E00E35C6F /* RelatedQueryCell.swift in Sources */,
 				C3001DA7295D2B9600979875 /* SettingViewReactor.swift in Sources */,
@@ -729,6 +743,7 @@
 				C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */,
 				C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */,
 				C3001DB9295D73F600979875 /* HomeDepthViewController.swift in Sources */,
+				C303BA472992181B001199AF /* ConversationReceivedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,13 +16,14 @@ class TransmitView: UIView {
     
     var disposeBag = DisposeBag()
     
+    var authorRelay = BehaviorRelay<[AuthorInfo]>(value: [])
     private let userName: String
     private var socket: WebSocket?
     var naviTitle: String?
     
     var informationLabelText = BehaviorRelay<String>(value: "")
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    lazy var emojiCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(TransmitCell.self, forCellWithReuseIdentifier: TransmitCell.identifier)
@@ -32,7 +33,13 @@ class TransmitView: UIView {
     
     let emoji = ["😀", "😬", "😁", "😂", "😃", "😄", "😅", "😆", "😇", "😉", "😊", "🙂", "🙃", "☺️", "😋", "😌", "😍", "😘", "😗", "😙", "😚", "😜", "😝", "😛", "🤑", "🤓", "😎", "🤗", "😏", "😶", "😐", "😑", "😒", "🙄", "🤔", "😳", "😞", "😟", "😠", "😡", "😔", "😕", "🙁", "☹️", "😣", "😖", "😫", "😩", "😤", "😮", "😱", "😨", "😰", "😯", "😦", "😧", "😢", "😥", "😪", "😓", "😭", "😵", "😲", "🤐", "😷", "🤒", "🤕", "😴", "💩"]
     
-    // MARK: - Lifecycle
+    // MARK: - Deinit
+    
+    deinit {
+        print("TransmitView Deinit")
+    }
+    
+    // MARK: - Initializing
     
     override init(frame: CGRect) {
         self.userName = UserDefaults.standard.string(forKey: "name") ?? ""
@@ -49,42 +56,39 @@ class TransmitView: UIView {
     // MARK: - Methods
     
     private func setupLayout() {
-        addSubviews([transmitInfoView, collectionView])
+        addSubviews([transmitInfoView, emojiCollectionView])
         transmitInfoView.snp.makeConstraints {
-            $0.height.equalTo(200)
+            $0.height.equalTo(UIScreen.main.bounds.size.height * 0.6)
             $0.top.equalTo(safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()
         }
         
-        collectionView.snp.makeConstraints {
+        emojiCollectionView.snp.makeConstraints {
             $0.top.equalTo(transmitInfoView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
     
     // MARK: - Bind
     
     private func bindData() {
-        collectionView.rx.itemSelected
-            .do(onNext: { [weak self] indexPath in
+        emojiCollectionView.rx.itemSelected
+            .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 if !self.transmitInfoView.transmitTextField.text!.isEmpty {
                     self.transmitInfoView.transmitTextField.text = ""
                 }
-            })
-            .bind(onNext: { [weak self] indexPath in
+            }).bind(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 self.informationLabelText.accept(self.emoji[indexPath.row])
-//                $0.0.transmitInfoView.transmitInfoLabel.text = $0.0.emoji[$0.1.row]
             })
             .disposed(by: disposeBag)
-        
+                
         informationLabelText
             .subscribe(onNext: { [weak self] labelText in
                 guard let self = self else { return }
-                print("labelText: \(labelText)")
                 self.transmitInfoView.transmitButton.isEnabled = labelText.isEmpty ? false : true
-                self.transmitInfoView.transmitInfoLabel.text = labelText
             })
             .disposed(by: disposeBag)
         
@@ -102,7 +106,34 @@ class TransmitView: UIView {
             .bind(onNext: { [weak self] text in
                 guard let self = self else { return }
                 self.informationLabelText.accept(text)
-//                $0.0.transmitInfoView.transmitInfoLabel.text = $0.1
+            })
+            .disposed(by: disposeBag)
+        
+        authorRelay
+            .asObservable()
+            .bind(to: transmitInfoView.conversationCollectionView.rx.items) { collectionView, row, info -> UICollectionViewCell in
+                switch info.isEqual {
+                case true:
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConversationSentCell.identifier, for: IndexPath(row: row, section: 0)) as? ConversationSentCell else { return UICollectionViewCell() }
+                    cell.setupRequest(info)
+                    return cell
+                case false:
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConversationReceivedCell.identifier, for: IndexPath(item: row, section: 0)) as? ConversationReceivedCell else { return UICollectionViewCell() }
+                    cell.setupRequest(info)
+                    return cell
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        transmitInfoView.isShowButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                UIView.transition(with: self.transmitInfoView.isShowButton, duration: 0.4,
+                                  options: .curveEaseInOut,
+                                  animations: {
+                    print("bool: \(self.transmitInfoView.isShowButton.isSelected)")
+                    self.emojiCollectionView.isHidden = self.transmitInfoView.isShowButton.isSelected
+                })
             })
             .disposed(by: disposeBag)
     }
@@ -118,10 +149,9 @@ class TransmitView: UIView {
         socket?.connect()
     }
     
-    private func receivedMessage(_ message: String, senderName: String) {
+    private func receivedMessage(senderName: String) {
         self.naviTitle = senderName
-        transmitInfoView.transmitInfoLabel.text = message
-      }
+    }
 }
 
 extension TransmitView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -139,11 +169,11 @@ extension TransmitView: UICollectionViewDelegateFlowLayout, UICollectionViewData
         let width = bounds.width / 7 - 2
         return CGSize(width: width, height: width)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
@@ -152,39 +182,47 @@ extension TransmitView: UICollectionViewDelegateFlowLayout, UICollectionViewData
 extension TransmitView: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
         switch event {
-        case .connected(let headers):
+        case .connected(_):
             client.write(string: userName)
-            print("웹소켓 연결됨: \(headers)")
         case .disconnected(let reason, let code):
             print("웹소켓 연결 종료 - 이유: \(reason), 코드: \(code)")
         case .text(let text):
-            print(".text: \(text)")
             guard let data = text.data(using: .utf16),
-                  let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+                  let jsonData = try? JSONSerialization.jsonObject(with: data),
                   let jsonDict = jsonData as? NSDictionary,
                   let messageType = jsonDict["type"] as? String else {
                 return
             }
             
-            if messageType == "message",
-               let messageData = jsonDict["data"] as? NSDictionary,
+            if messageType == "message", // 메시지 전송하면 발생
+               let messageData = jsonDict["data"] as? Dictionary<String, Any>,
                let messageAuthor = messageData["author"] as? String,
                let messageText = messageData["text"] as? String {
-                self.receivedMessage(messageText, senderName: messageAuthor)
+                let messageTime = messageData["time"] as? String
+                let isEqual = messageAuthor == userName
+                UserDefaults.standard.set(isEqual, forKey: "isEqual")
+                self.receivedMessage(senderName: messageAuthor)
+                
+                let info: AuthorInfo = .init(author: messageAuthor, text: messageText, time: messageTime, isEqual: isEqual)
+                var value = authorRelay.value
+                value.append(info)
+                
+                authorRelay.accept(value)
             }
         case .binary(let data):
             print("데이터 받음: \(data.count)")
-        case .pong(let pong):
-            print("pong 도착: \(pong)")
+        case .pong(_):
             break
-        case .ping(let ping):
-//            print("ping 보냄: \(ping)")
+        case .ping(_):
             break
         case .error(let error):
-            print("웹소켓 에러 발생: \(error)")
+            print("웹소켓 에러 발생: \(String(describing: error))")
+            break
         case .viabilityChanged(let bool):
+            print("viabilityChanged: \(bool)")
             break
         case .reconnectSuggested(let bool):
+            print("reconnectSuggested: \(bool)")
             break
         case .cancelled:
             print("웹소켓 취소됨")
@@ -201,6 +239,17 @@ class TransmitCell: UICollectionViewCell {
     let emojiLabel = UILabel().then {
         $0.text = "😀"
         $0.font = .boldSystemFont(ofSize: 22)
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                layer.borderWidth = 2.5
+                layer.borderColor = UIColor.systemBlue.cgColor
+            } else {
+                layer.borderColor = UIColor.clear.cgColor
+            }
+        }
     }
     
     // MARK: - Lifecycle
@@ -224,4 +273,12 @@ class TransmitCell: UICollectionViewCell {
             $0.center.equalToSuperview()
         }
     }
+}
+
+struct AuthorInfo {
+    var author: String?
+    var text: String?
+    var time: String?
+    
+    var isEqual: Bool
 }
