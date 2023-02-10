@@ -13,6 +13,12 @@ class ConversationSentCell: UICollectionViewCell {
     
     static let identifier = "ConversationSentCell"
     
+    lazy var timeLabel = UILabel().then {
+        $0.text = "17:00"
+        $0.textColor = .black
+        $0.font = .systemFont(ofSize: 13, weight: .medium)
+    }
+    
     lazy var contentLabel = UILabel().then {
         $0.text = "컨텐트 레이블"
         $0.textColor = .white
@@ -41,11 +47,16 @@ class ConversationSentCell: UICollectionViewCell {
     private func setupLayout() {
         contentView.backgroundColor = .systemBackground
         contentContainerView.addSubview(contentLabel)
-        contentView.addSubview(contentContainerView)
+        contentView.addSubviews([timeLabel, contentContainerView])
+        
+        timeLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(5)
+            $0.trailing.equalToSuperview().inset(15)
+        }
         
         contentContainerView.snp.makeConstraints {
             $0.height.equalTo(40)
-            $0.top.equalToSuperview().inset(5)
+            $0.top.equalTo(timeLabel.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(30)
             $0.trailing.equalToSuperview().inset(15)
         }
@@ -57,6 +68,10 @@ class ConversationSentCell: UICollectionViewCell {
     }
     
     func setupRequest(_ authorInfo: AuthorInfo) {
+        // 받아오는 유닉스 값이 이상한 관계로 뒤에 3자리 짜름
+        let unixTime = TimeInterval("\(Int(authorInfo.time!))".dropLast(3)) ?? 0
+        
         contentLabel.text = authorInfo.text
+        timeLabel.text = unixTime.timeStampConverter()
     }
 }

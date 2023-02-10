@@ -33,10 +33,10 @@ class TransmitInfoView: UIView {
     lazy var isShowButton = UIButton(type: .system).then {
         $0.backgroundColor = .systemBlue
         $0.titleLabel?.font = .boldSystemFont(ofSize: 17)
-        $0.setTitle("보기", for: .normal)
+        $0.setTitle("숨기기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         
-        $0.setTitle("숨기기", for: .selected)
+        $0.setTitle("보기", for: .selected)
         $0.setTitleColor(.white, for: .selected)
     }
     
@@ -86,6 +86,14 @@ class TransmitInfoView: UIView {
             $0.height.equalTo(40)
             $0.leading.equalTo(isShowButton.snp.trailing).offset(20)
             $0.trailing.bottom.equalToSuperview().inset(20)
+        }
+    }
+    
+    func setupIsShowButton() {
+        if isShowButton.isSelected { // "버튼 타이틀이 '숨기기' 인 상태
+            isShowButton.isSelected = false
+        } else { // "버튼 타이틀이 '보기' 인 상태
+            isShowButton.isSelected = true
         }
     }
 }

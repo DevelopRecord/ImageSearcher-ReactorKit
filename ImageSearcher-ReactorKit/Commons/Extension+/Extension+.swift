@@ -90,3 +90,15 @@ public extension Reactive where Base: UIViewController {
         return ControlEvent(events: source)
     }
 }
+
+extension TimeInterval {
+    func timeStampConverter() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        let date = Date(timeIntervalSince1970: self)
+        
+        return formatter.string(from: date)
+    }
+}

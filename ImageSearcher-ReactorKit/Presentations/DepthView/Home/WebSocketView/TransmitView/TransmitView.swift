@@ -115,10 +115,12 @@ class TransmitView: UIView {
                 switch info.isEqual {
                 case true:
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConversationSentCell.identifier, for: IndexPath(row: row, section: 0)) as? ConversationSentCell else { return UICollectionViewCell() }
+                    print("qwer: sent: \(info)")
                     cell.setupRequest(info)
                     return cell
                 case false:
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConversationReceivedCell.identifier, for: IndexPath(item: row, section: 0)) as? ConversationReceivedCell else { return UICollectionViewCell() }
+                    print("qwer: received: \(info)")
                     cell.setupRequest(info)
                     return cell
                 }
@@ -128,14 +130,44 @@ class TransmitView: UIView {
         transmitInfoView.isShowButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                UIView.transition(with: self.transmitInfoView.isShowButton, duration: 0.4,
-                                  options: .curveEaseInOut,
-                                  animations: {
-                    print("bool: \(self.transmitInfoView.isShowButton.isSelected)")
-                    self.emojiCollectionView.isHidden = self.transmitInfoView.isShowButton.isSelected
-                })
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 1, options: []) {
+                    self.transmitInfoView.setupIsShowButton()
+                    let isSelected = self.transmitInfoView.isShowButton.isSelected
+                    self.emojiCollectionView.isHidden = isSelected
+                    
+                    if isSelected {
+                        self.transmitInfoView.snp.remakeConstraints {
+                            $0.height.equalTo(UIScreen.main.bounds.size.height - 80 - self.safeAreaHeightOfBottom())
+                            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+                            $0.leading.trailing.equalToSuperview()
+                        }
+                        
+                        self.emojiCollectionView.snp.remakeConstraints {
+                            $0.height.equalTo(0)
+                        }
+                        self.layoutIfNeeded()
+                    } else {
+                        self.transmitInfoView.snp.remakeConstraints {
+                            $0.height.equalTo(UIScreen.main.bounds.size.height * 0.6)
+                            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+                            $0.leading.trailing.equalToSuperview()
+                        }
+                        
+                        self.emojiCollectionView.snp.remakeConstraints {
+                            $0.top.equalTo(self.transmitInfoView.snp.bottom)
+                            $0.leading.trailing.equalToSuperview()
+                            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+                        }
+                    }
+                }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func safeAreaHeightOfBottom() -> CGFloat {
+        guard let window = UIApplication.shared.windows.first else { return 0 }
+        return window.safeAreaInsets.bottom
     }
     
     // MARK: - Setup WebSocket
@@ -180,6 +212,9 @@ extension TransmitView: UICollectionViewDelegateFlowLayout, UICollectionViewData
 }
 
 extension TransmitView: WebSocketDelegate {
+    func bindAct(reactor: HomeViewReactor) {
+        
+    }
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
         switch event {
         case .connected(_):
@@ -187,6 +222,7 @@ extension TransmitView: WebSocketDelegate {
         case .disconnected(let reason, let code):
             print("웹소켓 연결 종료 - 이유: \(reason), 코드: \(code)")
         case .text(let text):
+            print(".text: \(text)")
             guard let data = text.data(using: .utf16),
                   let jsonData = try? JSONSerialization.jsonObject(with: data),
                   let jsonDict = jsonData as? NSDictionary,
@@ -198,16 +234,17 @@ extension TransmitView: WebSocketDelegate {
                let messageData = jsonDict["data"] as? Dictionary<String, Any>,
                let messageAuthor = messageData["author"] as? String,
                let messageText = messageData["text"] as? String {
-                let messageTime = messageData["time"] as? String
+                let messageTime = messageData["time"] as? TimeInterval
                 let isEqual = messageAuthor == userName
                 UserDefaults.standard.set(isEqual, forKey: "isEqual")
-                self.receivedMessage(senderName: messageAuthor)
+                print("qwer: time: \(messageTime), messagedata: \(messageData)")
                 
                 let info: AuthorInfo = .init(author: messageAuthor, text: messageText, time: messageTime, isEqual: isEqual)
                 var value = authorRelay.value
                 value.append(info)
-                
                 authorRelay.accept(value)
+                
+                self.receivedMessage(senderName: messageAuthor)
             }
         case .binary(let data):
             print("데이터 받음: \(data.count)")
@@ -237,7 +274,6 @@ class TransmitCell: UICollectionViewCell {
     static let identifier = "TransmitCell"
     
     let emojiLabel = UILabel().then {
-        $0.text = "😀"
         $0.font = .boldSystemFont(ofSize: 22)
     }
     
@@ -278,7 +314,7 @@ class TransmitCell: UICollectionViewCell {
 struct AuthorInfo {
     var author: String?
     var text: String?
-    var time: String?
+    var time: TimeInterval?
     
     var isEqual: Bool
 }

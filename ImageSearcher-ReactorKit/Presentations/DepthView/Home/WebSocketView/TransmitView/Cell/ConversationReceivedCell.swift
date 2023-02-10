@@ -25,6 +25,12 @@ class ConversationReceivedCell: UICollectionViewCell {
         $0.font = .boldSystemFont(ofSize: 16)
     }
     
+    lazy var timeLabel = UILabel().then {
+        $0.text = "17:00"
+        $0.textColor = .black
+        $0.font = .systemFont(ofSize: 13, weight: .medium)
+    }
+    
     lazy var contentLabel = UILabel().then {
         $0.text = "컨텐트 레이블"
         $0.textColor = .black
@@ -54,7 +60,7 @@ class ConversationReceivedCell: UICollectionViewCell {
         contentView.backgroundColor = .systemBackground
         
         
-        contentView.addSubviews([profileImage, nicknameLabel, contentContainerView])
+        contentView.addSubviews([profileImage, nicknameLabel, timeLabel, contentContainerView])
         contentContainerView.addSubview(contentLabel)
         
         profileImage.snp.makeConstraints {
@@ -66,6 +72,11 @@ class ConversationReceivedCell: UICollectionViewCell {
         nicknameLabel.snp.makeConstraints {
             $0.centerY.equalTo(profileImage)
             $0.leading.equalTo(profileImage.snp.trailing).offset(5)
+        }
+        
+        timeLabel.snp.makeConstraints {
+            $0.centerY.equalTo(nicknameLabel)
+            $0.leading.equalTo(nicknameLabel.snp.trailing).offset(20)
         }
         
         contentLabel.snp.makeConstraints {
@@ -82,7 +93,10 @@ class ConversationReceivedCell: UICollectionViewCell {
     }
     
     func setupRequest(_ authorInfo: AuthorInfo) {
+        let unixTime = TimeInterval("\(Int(authorInfo.time!))".dropLast(3)) ?? 0
+        
         nicknameLabel.text = authorInfo.author
         contentLabel.text = authorInfo.text
+        timeLabel.text = unixTime.timeStampConverter()
     }
 }
