@@ -15,13 +15,13 @@ class WebSocketView: UIView {
     var disposeBag = DisposeBag()
     
     let whatsYourNameLabel = UILabel().then {
-        $0.text = "너의 이름은 뭐야?"
+        $0.text = "이름을 입력하세요."
         $0.font = .boldSystemFont(ofSize: 26)
         $0.textAlignment = .center
     }
     
     lazy var nameTextField = UITextField().then {
-        $0.placeholder = "너의 이름을 입력해 보세요."
+        $0.placeholder = "이름을 입력해 보세요."
         $0.layer.cornerRadius = 14
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.lightGray.cgColor

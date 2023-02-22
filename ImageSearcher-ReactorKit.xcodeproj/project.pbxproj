@@ -24,6 +24,9 @@
 		C3001DBB295D75C300979875 /* HomeDepthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3001DBA295D75C300979875 /* HomeDepthView.swift */; };
 		C303BA4529921801001199AF /* ConversationSentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303BA4429921801001199AF /* ConversationSentCell.swift */; };
 		C303BA472992181B001199AF /* ConversationReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303BA462992181B001199AF /* ConversationReceivedCell.swift */; };
+		C307F7F0299C600A00E72FF5 /* TransmitViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307F7EF299C600A00E72FF5 /* TransmitViewReactor.swift */; };
+		C307F7F2299C6D3F00E72FF5 /* AuthorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307F7F1299C6D3F00E72FF5 /* AuthorInfo.swift */; };
+		C307F7F4299C6D6500E72FF5 /* TransmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307F7F3299C6D6500E72FF5 /* TransmitCell.swift */; };
 		C33B4B0529498F0400E35C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0429498F0400E35C6F /* AppDelegate.swift */; };
 		C33B4B0729498F0400E35C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33B4B0629498F0400E35C6F /* SceneDelegate.swift */; };
 		C33B4B0E29498F0600E35C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33B4B0D29498F0600E35C6F /* Assets.xcassets */; };
@@ -94,6 +97,9 @@
 		C3001DBA295D75C300979875 /* HomeDepthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDepthView.swift; sourceTree = "<group>"; };
 		C303BA4429921801001199AF /* ConversationSentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationSentCell.swift; sourceTree = "<group>"; };
 		C303BA462992181B001199AF /* ConversationReceivedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationReceivedCell.swift; sourceTree = "<group>"; };
+		C307F7EF299C600A00E72FF5 /* TransmitViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitViewReactor.swift; sourceTree = "<group>"; };
+		C307F7F1299C6D3F00E72FF5 /* AuthorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorInfo.swift; sourceTree = "<group>"; };
+		C307F7F3299C6D6500E72FF5 /* TransmitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitCell.swift; sourceTree = "<group>"; };
 		C33B4B0129498F0400E35C6F /* ImageSearcher-ReactorKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageSearcher-ReactorKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B4B0429498F0400E35C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C33B4B0629498F0400E35C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 			children = (
 				C303BA4429921801001199AF /* ConversationSentCell.swift */,
 				C303BA462992181B001199AF /* ConversationReceivedCell.swift */,
+				C307F7F3299C6D6500E72FF5 /* TransmitCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -335,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				C33B4B2929499B4B00E35C6F /* Giphy.swift */,
+				C307F7F1299C6D3F00E72FF5 /* AuthorInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,6 +517,7 @@
 				C391411B298B944B00EA8175 /* TransmitViewController.swift */,
 				C391411E298B949100EA8175 /* TransmitView.swift */,
 				C3914120298BB49B00EA8175 /* TransmitInfoView.swift */,
+				C307F7EF299C600A00E72FF5 /* TransmitViewReactor.swift */,
 			);
 			path = TransmitView;
 			sourceTree = "<group>";
@@ -698,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33B4B262949942D00E35C6F /* ItemViewController.swift in Sources */,
+				C307F7F0299C600A00E72FF5 /* TransmitViewReactor.swift in Sources */,
 				C33B4B31294AAC1700E35C6F /* Extension+.swift in Sources */,
 				C3BEAAA32950467700C351F2 /* DetailView.swift in Sources */,
 				C34E7826295298070008CD63 /* InduceViewReactor.swift in Sources */,
@@ -742,6 +752,8 @@
 				C33B4B35294AAC8E00E35C6F /* RelatedQueryView.swift in Sources */,
 				C3BEAAA52950467F00C351F2 /* DetailViewReactor.swift in Sources */,
 				C33B4B3D294AFE0400E35C6F /* ItemCell.swift in Sources */,
+				C307F7F2299C6D3F00E72FF5 /* AuthorInfo.swift in Sources */,
+				C307F7F4299C6D6500E72FF5 /* TransmitCell.swift in Sources */,
 				C3001DB9295D73F600979875 /* HomeDepthViewController.swift in Sources */,
 				C303BA472992181B001199AF /* ConversationReceivedCell.swift in Sources */,
 			);

@@ -70,9 +70,13 @@ class HomeFlow: Flow {
     }
     
     private func coordinateToWebSocketChat() -> FlowContributors {
-        let controller = TransmitViewController()
+        let reactor = TransmitViewReactor()
+        let controller = TransmitViewController(reactor: reactor)
         rootViewController.pushViewController(controller, animated: true)
+        
         return .none
+//        return .one(flowContributor: .contribute(withNextPresentable: controller,
+//                                                 withNextStepper: reactor))
     }
     
     private func coordinateToHomeDepth() -> FlowContributors {

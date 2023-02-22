@@ -55,9 +55,10 @@ class ConversationSentCell: UICollectionViewCell {
         }
         
         contentContainerView.snp.makeConstraints {
+            $0.width.equalTo(0)
             $0.height.equalTo(40)
             $0.top.equalTo(timeLabel.snp.bottom).offset(5)
-            $0.leading.equalToSuperview().inset(30)
+//            $0.leading.equalToSuperview().inset(30)
             $0.trailing.equalToSuperview().inset(15)
         }
         
@@ -73,5 +74,10 @@ class ConversationSentCell: UICollectionViewCell {
         
         contentLabel.text = authorInfo.text
         timeLabel.text = unixTime.timeStampConverter()
+        
+        guard let text = authorInfo.text else { return }
+        contentContainerView.snp.updateConstraints {
+            $0.width.equalTo(text.widthOfString(usingFont: .systemFont(ofSize: 13, weight: .medium)) + 20)
+        }
     }
 }

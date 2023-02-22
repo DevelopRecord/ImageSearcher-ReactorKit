@@ -18,7 +18,6 @@ class ItemView: UIView {
     lazy var itemCollectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout()).then {
         $0.backgroundColor = .clear
         $0.refreshControl = refreshControl
-//        $0.rx.setDelegate(self).disposed(by: disposeBag)
         $0.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.identifier)
     }
     
@@ -137,18 +136,3 @@ class ItemView: UIView {
         })
     }
 }
-
-//extension ItemView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = bounds.width / 4 - 2
-//        return CGSize(width: width, height: width)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
-//}

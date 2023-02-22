@@ -85,9 +85,10 @@ class ConversationReceivedCell: UICollectionViewCell {
         }
         
         contentContainerView.snp.makeConstraints {
+            $0.width.equalTo(0)
             $0.top.equalTo(nicknameLabel.snp.bottom).offset(3)
             $0.leading.equalTo(profileImage.snp.trailing).offset(5)
-            $0.trailing.equalToSuperview().offset(-30)
+//            $0.trailing.equalToSuperview().offset(-30)
             $0.bottom.equalToSuperview().inset(3)
         }
     }
@@ -98,5 +99,10 @@ class ConversationReceivedCell: UICollectionViewCell {
         nicknameLabel.text = authorInfo.author
         contentLabel.text = authorInfo.text
         timeLabel.text = unixTime.timeStampConverter()
+        
+        guard let text = authorInfo.text else { return }
+        contentContainerView.snp.updateConstraints {
+            $0.width.equalTo(text.widthOfString(usingFont: .systemFont(ofSize: 13, weight: .medium)) + 20)
+        }
     }
 }
